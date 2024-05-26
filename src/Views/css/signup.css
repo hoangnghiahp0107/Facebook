@@ -1,0 +1,172 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+/*background section start*/
+body{
+    background-image:  url(logo.png);
+    background-size: cover;
+    position: relative;
+}
+body::before{
+    position: absolute;
+    content: "";
+    background: white;
+    width: 100%;
+    height: 100vh;
+    top: -70px;
+    opacity: 0.6;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* logo */
+.logo-container {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-right: 49px;
+}
+
+.logo {
+    width: 350px; /* Kích thước của logo, bạn có thể điều chỉnh */
+    height: auto;
+}
+
+/* background section end */
+/*form signup section start*/
+form {
+    width: 425px;
+    height: 500px;
+    margin-top: 5%;
+    box-shadow: 0px 5px 8px 3px #aaa;
+    background:  white;
+    z-index: 10;
+    position: relative;
+}
+/* 1st title and sub-stitle start */
+.first_title{
+    text-align: center;
+    font-size: 32px;
+    padding: 10px 10px 0px 10px;
+}
+.first_sub_title{
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 10px 0px 10px;
+}
+#sub_title {
+    color: #606770;
+    margin-left: 10px;
+}
+hr{
+    margin-top: 10px;
+    opacity: 20%;
+}
+/* 1st title and sub-stitle end */
+/* input section start */
+#all{
+    width: 180px;
+    border-radius: 5px;
+    background: #e6e6ee;
+    height: 35px;
+    border: 1px solid #aaa;
+    font-size: 15px;
+    margin-left: 12px;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+#all1{
+    width: 390px;
+    background: #e6e6ee;
+    height: 35px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-left: 12px;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+/* input section end */
+/* date of Birth section start */
+.sub_title_2 {
+    margin-top: 10px;
+    font-size: 12px;
+}
+select{
+    width: 125px;
+    background: none;
+    height: 35px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
+    }
+/* date of Birth section end */
+/* gender section start */
+.sub_title_3 {
+    margin-top: 10px;
+    font-size: 12px;
+}
+#all_gender{
+    width: 110px;
+    margin: 0px 20px;
+    border: 1px solid #aaa;
+    padding: 10px 0px 0px 10px;
+    border-radius: 5px;
+}
+/* gender section end */
+/* last section start */
+.sub_title_4{
+    margin-left: 10px;
+    font-size: 10px;
+    color: #606770;
+    margin-top: 10px;
+}
+.sub_title_4 a{
+    text-decoration: none;
+    color: blue;
+}
+.submit{
+    width: 200px;
+    height: 40px;
+    background: #0ebd02;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    margin-left: 25%;
+    margin-top: 20px;
+}
+.submit:hover{
+    opacity: 60%;
+}
+.already-account {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.already-account a {
+    color: #1877F2; /* Màu xanh của Facebook */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.already-account a:hover {
+    text-decoration: underline;
+}
+
+
+/* last section start */
+/*form section end*/
+
+@media only screen and (max-width: 1024px) {
+    
+}
