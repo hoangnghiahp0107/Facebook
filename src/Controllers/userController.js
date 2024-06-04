@@ -9,7 +9,7 @@ const model = initModels(sequelize);
 
 const signUp = async (req, res) => {
     try {
-        let { SDT, Email, MatKhau, NgaySinh, GioiTinh, HoTen, MaVaiTro, AnhDaiDien } = req.body;
+        let { SDT, Email, MatKhau, NgaySinh, GioiTinh, HoTen, MaVaiTro, AnhDaiDien, Daxoa, NgayDangKy } = req.body;
         
         let whereCondition = {};
         if (SDT) {
@@ -24,7 +24,7 @@ const signUp = async (req, res) => {
         });
 
         if (checkTK) {
-            res.send("Email hoặc số điện thoại đã tồn tại");
+            res.status(200).send("Email hoặc số điện thoại đã tồn tại!");
             return;
         }
         
@@ -33,12 +33,15 @@ const signUp = async (req, res) => {
             return;
         }
 
-        Email = Email || "Dữ liệu không tồn tại";
-        SDT = SDT || "Dữ liệu không tồn tại";
+        Email = Email || "0";
+        SDT = SDT || "0";
 
         AnhDaiDien = AnhDaiDien || "abc.jpg";
         MaVaiTro = MaVaiTro || 2;
-            
+        Daxoa = Daxoa || 0;
+        NgayDangKy = NgayDangKy || new Date();
+        console.log(NgayDangKy)
+
         let newData = {
             SDT,
             Email,
@@ -47,11 +50,12 @@ const signUp = async (req, res) => {
             GioiTinh,
             HoTen,
             AnhDaiDien,
-            MaVaiTro
+            MaVaiTro,
+            NgayDangKy
         };
         
         await model.NguoiDung.create(newData);
-        res.send("Đăng ký tài khoản thành công");
+        res.send("Đăng ký tài khoản thành công!");
     } catch (error) {
         console.log(error);
         res.status(500).send("Đã có lỗi trong quá trình xử lý");
@@ -93,5 +97,42 @@ const login = async (req, res) => {
     }
 };
 
+const updateUser = async(req, res) =>{
+    try {
+        let { MaNguoiDung } = req.params;
+        let { SDT, Email, MatKhau, NgaySinh, GioiTinh, HoTen, AnhDaiDien } = req.body;
+        const hashedPassword = bcrypt.hashSync(MatKhau, 10);
+        await model.NguoiDung.update(
+            {SDT, Email, MatKhau:hashedPassword, NgaySinh,GioiTinh,HoTen,AnhDaiDien},
+            {
+                where:{
+                    MaNguoiDung
+                }
+            }
+        );
+        res.status(200).send("Cập nhật thành công!");
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Đã có lỗi trong quá trình xử lý!");
+    }
+} 
 
-export {signUp, login}
+const deleteUser = async (req, res) => {
+    try {
+        let { MaNguoiDung } = req.params;
+        await model.NguoiDung.update(
+            { Daxoa: 1 },
+            {
+                where: {
+                    MaNguoiDung
+                }
+            }
+        );
+        res.status(200).send("Xóa người dùng thành công!");
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Đã có lỗi trong quá trình xử lý!");
+    }
+};
+
+export {signUp, login, updateUser, deleteUser}
