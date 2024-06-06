@@ -3,6 +3,7 @@ import initModels from "../Models/init-models.js";
 import bcrypt from "bcrypt";
 import {taoToken} from "../Config/jwtConfig.js";
 import { Sequelize } from 'sequelize';
+import jwt from "jsonwebtoken";
 
 const Op = Sequelize.Op;
 const model = initModels(sequelize);
@@ -36,7 +37,7 @@ const signUp = async (req, res) => {
         Email = Email || "0";
         SDT = SDT || "0";
 
-        AnhDaiDien = AnhDaiDien || "abc.jpg";
+        AnhDaiDien = AnhDaiDien || "noimg.png";
         MaVaiTro = MaVaiTro || 2;
         Daxoa = Daxoa || 0;
         NgayDangKy = NgayDangKy || new Date();
@@ -135,4 +136,52 @@ const deleteUser = async (req, res) => {
     }
 };
 
-export {signUp, login, updateUser, deleteUser}
+const getUserID = async (req, res) => {
+    try {
+        const { MaNguoiDung } = req.params;
+        const token = req.headers.token;
+
+        if (!token) {
+            return res.status(401).send("Người dùng không được xác thực");
+        }
+        const decodedToken = jwt.verify(token, 'HOANGNGHIA');
+        const currentUserID = decodedToken.data.MaNguoiDung;
+
+        if (Number(MaNguoiDung) !== currentUserID) {
+            return res.status(403).send("Không có quyền truy cập thông tin người dùng này");
+        }
+
+        const data = await model.NguoiDung.findOne({
+            where: {
+                MaNguoiDung: MaNguoiDung
+            }
+        });
+
+        if (!data) {
+            return res.status(404).send("Không tìm thấy người dùng");
+        }
+
+        res.send(data);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Lỗi xác thực token");
+    }
+}
+
+const logout = async (req, res) => {
+    try {
+      const token = req.headers.authorization || req.body.token;
+  
+      if (!token) {
+        return res.status(401).send("Token không hợp lệ");
+      }
+  
+      blacklistedTokens.push(token);
+  
+      res.status(200).send("Đã đăng xuất thành công");
+    } catch (error) {
+      res.status(500).send("Đã có lỗi trong quá trình xử lý");
+    }
+  };
+
+export {signUp, login, updateUser, deleteUser, getUserID, logout}

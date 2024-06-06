@@ -21,7 +21,6 @@ async function SignIn() {
   
     const isTaiKhoanEmail = isEmail(taiKhoan);
     try {
-      debugger
       const response = await apiLogin({
         SDT: isTaiKhoanEmail ? null : taiKhoan,
         Email: isTaiKhoanEmail ? taiKhoan : null,

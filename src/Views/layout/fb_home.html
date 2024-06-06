@@ -32,12 +32,12 @@
             <i class="fa-solid fa-bell"></i>
 
             <!-- Drop down profile menu-->
-            <img src="https://scontent.fsgn5-2.fna.fbcdn.net/v/t39.30808-6/288501795_2807427116227408_60597207930728543_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=dlRpH3SWPLcQ7kNvgH0JaYV&_nc_ht=scontent.fsgn5-2.fna&oh=00_AYAdJe0xhiPOc6N3DJzHv_Ob6VpiJMArCKm7WIUVGOHvkw&oe=665920C3" alt="" class="profile-button" onclick="openCard()">
+            <img id="avarta" onclick="openCard()">
             <div class="card-menu-warp" id="cardWarp">
               <div class="card-menu">
                 <div class="profile-menu">
-                    <img src="https://scontent.fsgn5-2.fna.fbcdn.net/v/t39.30808-6/288501795_2807427116227408_60597207930728543_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=dlRpH3SWPLcQ7kNvgH0JaYV&_nc_ht=scontent.fsgn5-2.fna&oh=00_AYAdJe0xhiPOc6N3DJzHv_Ob6VpiJMArCKm7WIUVGOHvkw&oe=665920C3"/>
-                    <p>Huy Hồ</p>
+                    <img id="avarta"/>
+                    <p id="nameID">Huy Hồ</p>
                 </div>
                 <a href="#" class="card-menu-items">
                   <i class="fa-solid fa-gear"></i>
@@ -57,7 +57,7 @@
                   <span>></span>
                 </a>
 
-                <a href="#" class="card-menu-items">
+                <a href="#" class="card-menu-items" id="logoutButton">
                   <i class="fa-solid fa-right-to-bracket"></i>
                   <p>Log out</p>
                   <span>></span>
@@ -72,8 +72,8 @@
           <!--THANH SECTION BÊN TRÁI-->
           <div class="main-left">
               <div class="img">
-                <img src="https://scontent.fsgn5-2.fna.fbcdn.net/v/t39.30808-6/288501795_2807427116227408_60597207930728543_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=dlRpH3SWPLcQ7kNvgH0JaYV&_nc_ht=scontent.fsgn5-2.fna&oh=00_AYAdJe0xhiPOc6N3DJzHv_Ob6VpiJMArCKm7WIUVGOHvkw&oe=665920C3">
-                <p>Huy Hồ</p>
+                <img id="avarta">
+                <p id="nameID">Huy Hồ</p>
               </div>
 
               <div class="img">
@@ -88,31 +88,22 @@
 
               <hr>
 
-              <h2> Your shorcuts</h2>
+              <h2>Games</h2>
 
-              <div class="img">
+              <a href="/src/games/CollectAll/NoMoreTrash.html" class="img">
                 <img src="/public/img/gam1.png">
-                <p>Candy rush</p>
-              </div>
-
-              <div class="img">
-                <img src="/public/img/gam1.png">
-                <p>Candy rush</p>
-              </div>
-              <div class="img">
-                <img src="/public/img/gam1.png">
-                <p>Candy rush</p>
-              </div>
+                <p>Trash Fall</p>
+              </a>
              
-              <div class="img">
-                <img src="/public/img/gam2.jpg">
-                <p>Dragon city</p>
-              </div>
+              <a href="/src/games/Insaniaquarium/Insaniquarium.html" class="img">
+                <img src="/public/img/gam2.png">
+                <p>Insaniaquarium</p>
+              </a>
 
-              <div class="img">
+              <a href="/src/games/DDRR/ddrrr.html" class="img">
                 <img src="/public/img/gam3.png">
-                <p>Tien len mien nam</p>
-              </div>
+                <p>No more trash</p>
+              </a>
           </div>
            <!--PHẦN HIỆN THỊ CHÍNH STORY/POST-->
             <div class="main-center">
@@ -134,7 +125,7 @@
                      <img src="https://scontent.fsgn5-2.fna.fbcdn.net/v/t39.30808-6/288501795_2807427116227408_60597207930728543_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=dlRpH3SWPLcQ7kNvgH0JaYV&_nc_ht=scontent.fsgn5-2.fna&oh=00_AYAdJe0xhiPOc6N3DJzHv_Ob6VpiJMArCKm7WIUVGOHvkw&oe=665920C3" alt="">
                     </div>
                     <div class="friend-name">
-                      <p>Nguyễn Hoàng Nghĩa</p>
+                      <p>Huy Hồ</p>
                     </div>
               </div>
 
@@ -168,7 +159,7 @@
               <div class="create-post">
                 <div class="create-slide">
                   <div class="ptop">
-                    <img src="https://scontent.fsgn5-2.fna.fbcdn.net/v/t39.30808-6/288501795_2807427116227408_60597207930728543_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=dlRpH3SWPLcQ7kNvgH0JaYV&_nc_ht=scontent.fsgn5-2.fna&oh=00_AYAdJe0xhiPOc6N3DJzHv_Ob6VpiJMArCKm7WIUVGOHvkw&oe=665920C3">
+                    <img id="avarta">
                     <input type="text" placeholder="What's on your mine, Huy Hồ">
                   </div>  
                     <hr>
@@ -461,6 +452,11 @@
                  </div>
     </div>
     </div>
-   <script src="../js/home.js"></script>
-  </body>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
+   integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
+   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../js/class.js"></script>
+  <script src="../services/callApi.js"></script>
+  <script src="../js/home.js"></script>
+</body>
 </html>
