@@ -40,7 +40,6 @@ async function getUser(userID) {
             user.Daxoa,
             user.NgayDangKy
         );
-        
         renderInfo(userObj);
     } catch (error) {
         console.log("Lỗi từ máy chủ");
@@ -48,8 +47,11 @@ async function getUser(userID) {
 }
 
 function renderInfo(user) {
-    const avatarImgs = document.querySelectorAll("#avarta");
-    const nameParagraphs = document.querySelectorAll("#nameID");
+    const avatarImgs = document.querySelectorAll("#avatarPreview");
+    const nameUser = document.querySelectorAll("#username");
+    const emailUser = document.querySelectorAll("#email");
+    const phoneUser = document.querySelectorAll("#phone");
+    const sexUser = document.querySelectorAll("#sex");
     avatarImgs.forEach(avatarImg => {
         if (user.AnhDaiDien) {
             avatarImg.src = `../../../public/img/${user.AnhDaiDien}`;
@@ -57,36 +59,33 @@ function renderInfo(user) {
             avatarImg.src = "noimg.png";
         }
     });
-    nameParagraphs.forEach(nameParagraph => {
+    nameUser.forEach(name => {
         if (user.HoTen) {
-            nameParagraph.textContent = user.HoTen;
+            name.value = user.HoTen;
         } else {
-            nameParagraph.textContent = " ";
+            name.value = " ";
         }
     });
+    emailUser.forEach(email => {
+        if (user.Email) {
+            email.value = user.Email;
+        } else {
+            email.value = " ";
+        }
+    });
+    phoneUser.forEach(phone => {
+        if (user.SDT !== undefined && user.SDT.trim() !== "" && user.SDT !== "0") {
+            phone.value = user.SDT;
+        } else {
+            phone.value = "";
+        }
+    });
+    
+    sexUser.forEach(sex => {
+        if (user.GioiTinh) {
+            sex.value = user.GioiTinh;
+        } else {
+            sex.value = " ";
+        }
+    })
 }
-
-function logout() {
-    localStorage.removeItem('localStorageToken');
-    window.location.href = "fb_signin.html";
-}
-
-async function logout() {
-    try {
-      const token = localStorage.getItem("localStorageToken");
-      await apiLogout(token);
-      localStorage.removeItem("localStorageToken");
-      window.location.href = "fb_signin.html"; 
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  
-
-document.getElementById("logoutButton").addEventListener("click", function() {
-    logout();
-});
-
-
-
-

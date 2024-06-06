@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/public/img/fb_logo.png" />
+    <title>Facebook</title>
+    <link rel="stylesheet" href="../css/setting.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Settings</h1>
+        <form id="settingsForm">
+            <div class="section">
+                <h2>Profile Picture</h2>
+                <img id="avatarPreview" alt="Avatar" class="avatar">
+                <input type="file" id="avatar" name="avatar" class="file-input" accept="image/*">
+            </div>
+
+            <div class="section">
+                <h2>Personal Information</h2>
+                <label for="username">Name:</label>
+                <input type="text" id="username" name="username" class="input-field">
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="input-field">
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" class="input-field">
+                
+                <label for="sex">Sex:</label>
+                <input type="text" id="sex" name="sex" class="input-field">
+            </div>
+            
+            <div class="section">
+                <h2>Change Password</h2>
+                <label for="currentPassword">Current Password:</label>
+                <input type="password" id="currentPassword" name="currentPassword" class="input-field">
+                
+                <label for="newPassword">New Password:</label>
+                <input type="password" id="newPassword" name="newPassword" class="input-field">
+                
+                <label for="confirmPassword">Confirm New Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="input-field">
+            </div>
+            
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
+    integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../js/class.js"></script>
+    <script src="../services/callApi.js"></script>
+    <script src="../js/setting.js"></script>
+</body>
+</html>
