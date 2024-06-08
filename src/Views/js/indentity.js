@@ -82,11 +82,6 @@ async function logout() {
     }
 }
   
-
 document.getElementById("logoutButton").addEventListener("click", function() {
     logout();
 });
-
-
-
-

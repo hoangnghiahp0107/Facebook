@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/public/img/fb_logo.png" />
+    <title>Facebook</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    <title>Facebook </title>
+    <link rel="stylesheet" href="../css/indentity.css">
+    <script src="https://kit.fontawesome.com/c425e24a8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css">
+
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <div class="fb-logo"><a href="fb_home.html"><img src="/public/img/fb_logo.png"/></a></div>
+            <div class="search-bar"> <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Tìm kiếm trên Facebook"/>
+            </div>
+        </div>
+        <div class="nav-center">
+            <i class="fa-solid fa-house"></i>
+            <i class="fa-solid fa-users"></i> 
+            <i class="fa-solid fa-tv"></i>
+            <i class="fa-solid fa-shop"></i>
+            <i class="fa-solid fa-users-line"></i>
+        </div>
+        <div class="nav-right">
+            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-message"></i>
+            <i class="fa-solid fa-bell"></i>
+
+            <!-- Drop down profile menu-->
+            <img id="avarta" onclick="openCard()">
+            <div class="card-menu-warp" id="cardWarp">
+              <div class="card-menu">
+                <a href="fb_identity.html" class="profile-menu">
+                    <img id="avarta"/>
+                    <p id="nameID">Huy Hồ</p>
+                </a>
+                <a href="fb_setting.html" class="card-menu-items">
+                  <i class="fa-solid fa-gear"></i>
+                  <p>Setting</p>
+                  <span>></span>
+                </a>
+
+                <a href="#" class="card-menu-items">
+                  <i class="fa-solid fa-flag"></i>
+                  <p>Page</p>
+                  <span>></span>
+                </a>
+
+                <a href="#" class="card-menu-items">
+                  <i class="fa-solid fa-envelope"></i>
+                  <p>Support</p>
+                  <span>></span>
+                </a>
+
+                <a href="#" class="card-menu-items" id="logoutButton">
+                  <i class="fa-solid fa-right-to-bracket"></i>
+                  <p>Log out</p>
+                  <span>></span>
+                </a>
+              </div>
+            </div>  
+        </div>
+    </nav>
+<!-- Profile page -->
+<div class="profile-container">
+    <img src="/public/img/mtp.jpg" class="cover-img">
+    <div class="profile-details">
+        <div class="pd-left">
+            <div class="pd-row">
+                <img src="/public/img/thm.jpg" class="pd-images" id="avarta">
+                <div>
+                    <h3 id="nameID">Thái Hiếu Minh</h3>
+                    <p>120 Friends - 20 mutual</p>
+                    <img src="/public/img/thm.jpg">
+                    <img src="/public/img/thm.jpg">
+                    <img src="/public/img/thm.jpg">
+                    <img src="/public/img/thm.jpg">
+                </div>
+            </div>
+        </div>
+        <div class="pd-right">
+            <button type="button"><img src="/public/img/add-friends.png">Friend</button>
+            <button type="button"><img src="/public/img/message.png">Message</button>
+            <br>
+            <a href="#"><img src="/public/img/more.png"></a>
+        </div>
+    </div>
+    <hr>
+    <div class="profile-info">
+        <div class="info-col">
+            <!-- <div class="profile-intro">
+                <h3>Intro</h3>
+                <p class="intro-text">Believe in yourself please. <img src="images/feeling.png"></p>
+                <hr>
+                <ul>
+                    <li><img src="images/profile-job.png">Student</li>
+                    <li><img src="images/profile-study.png">Studied at Huflit University</li>
+                    <li><img src="images/profile-study.png">Went to ye êyyey</li>
+                    <li><img src="images/profile-home.png">Lives in THPCM</li>
+                    <li><img src="images/profile-location.png">From TPHCM, Vietnam</li>
+                </ul>
+            </div> -->
+            <div class="profile-intro">
+                <div class="title-box">
+                    <h3>Photos</h3>
+                    <a href="#">All Photos</a>
+                </div>
+                <div class="photo-box">
+                    <div><img src="/public/img/thm.jpg"></div>
+                    <div><img src="/public/img/thm.jpg"></div>
+                    <div><img src="/public/img/thm.jpg"></div>
+                    <div><img src="/public/img/thm.jpg"></div>
+                    <div><img src="/public/img/thm.jpg"></div>
+                    <div><img src="/public/img/thm.jpg"></div>
+                </div>
+            </div>
+            <div class="profile-intro">
+                <div class="title-box">
+                    <h3>Friends</h3>
+                    <a href="#">All Friends</a>
+                </div>
+                <p>120 (10 mutual)</p>
+                <div class="friends-box">
+                    <div><img src="/public/img/thm.jpg"><p>Thái Hiếu Minh</p></div>
+                    <div><img src="/public/img/thm.jpg"><p>Thái Hiếu Minh</p></div>
+                    <div><img src="/public/img/thm.jpg"><p>Thái Hiếu Minh</p></div>
+                    <div><img src="/public/img/thm.jpg"><p>Thái Hiếu Minh</p></div>
+                    <div><img src="/public/img/thm.jpg"><p>Thái Hiếu Minh</p></div>
+                    <div><img src="/public/img/thm.jpg"><p>Thái Hiếu Minh</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="post-col">
+            <div class="write-post-container">
+                <div class="user-profile">
+                    <img id="avarta" src="/public/img/thm.jpg">
+                    <div>
+                        <p id="nameID">Thái Hiếu Minh</p>
+                        <small>Public <i class="fas fa-caret-down"></i></small>
+                    </div>
+                </div>
+                <div class="post-input-container">
+                    <textarea rows="3" placeholder="What's on your mind, Việt?"></textarea>
+                    <div class="add-post-links">
+                        <!-- <a href="#"><img src="images/live-video.png"> Live Video</a> -->
+                        <a href="#"><img src="/public/img/photo.png"> Photo/Video</a>
+                        <!-- <a href="#"><img src="images/feeling.png"> Feeling</a> -->
+                    </div>
+                </div>
+            </div>
+            <div class="post-container">
+                <div class="user-profile">
+                    <img id="avarta" src="/public/img/thm.jpg">
+                    <div>
+                        <p id="nameID">Thái Hiếu Minh</p>
+                        <span>Tháng 5 23 2024, 15:30</span>
+                    </div>
+                </div>
+                <p class="post-text">Tự nhiên thấy mình cũng đẹp trai.
+                    <br>
+                    Aka: Tuấn không bao
+                </p>
+                <img src="/public/img/j97.jpg" class="post-img">
+                <div class="post-row">
+                    <div class="activity-icons">
+                        <div><img src="/public/img/like-blue.png" alt="like">120</div>
+                        <div><img src="/public/img/comments.png" alt="comments">45</div>
+                        <div><img src="/public/img/share.png" alt="share">12</div>
+                    </div>
+                    <div class="post-profile-icon">
+                        <img id="avarta" src="/public/img/thm.jpg"><i class="fas fa-caret-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>Quyền riêng tư · Điều khoản · Quảng cáo · Lựa chọn quảng cáo · Cookie · Meta © 2024</p>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
+integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="../js/class.js"></script>
+<script src="../services/callApi.js"></script>
+<script src="../js/indentity.js"></script>
+</body>
+</html>

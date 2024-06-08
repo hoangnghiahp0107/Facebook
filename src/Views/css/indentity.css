@@ -1,6 +1,12 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border;
 }
 
@@ -453,436 +459,362 @@ nav {
 
 }
 
-/* sponserd selection*/
-.sponsored-link {
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 5%;
+}
+.left-sidebar, .right-sidebar {
+    background: #cbdffa;
+    flex-basis: 25%;
+    position: sticky;
+    top: 70px;
+    align-self: flex-start;
+}
+.main-content {
+    flex-basis: 47%;
+}
+.footer {
+    text-align: center;
+    color: #9a9a9a;
+    padding: 10px 0 20px;
+    font-size: 13px;
+}
+.profile-container {
+    padding: 20px 5%;
+    color: #626262;
+}
+.cover-img {
     width: 100%;
+    max-height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: unset;
+    border-radius: 6px;
+    margin-bottom: 14px;
+}
+.profile-details {
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
     display: flex;
-    align-items: center;
-    height: 100px;
-    cursor: pointer;
-    overflow: hidden;
-    border-radius: 7px;
-    padding: 5px;
+    align-items: flex-start;
+    justify-content: space-between;
 }
-
-.sponsored-link:hover {
-    background: #D8DADF;
-}
-
-.sponsored-link img {
-    border-radius: 7px;
-    width: 90px;
-    height: 80px;
-}
-
-.sponsored-link p {
-    padding: 14px 0;
-    font-size: 14px;
-    font-weight: 500;
-    color: black;
-    margin-left: 10px;
-}
-
-.sponsored-link p a {
-    text-decoration: none;
-    font-size: 12px;
-    color: #646262;
-}
-
-/* page selection*/
-.page-link {
-    border-radius: 7px;
+.pd-row {
     display: flex;
-    align-items: center;
-    height: 50px;
-    margin: 10px 5px;
-    cursor: pointer;
-}
-
-.page-link:hover {
-    background: #D8DADF;
-}
-
-.page-link p {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 14px 0;
-    font-size: 13px;
-    font-weight: 550;
-    color: #252525;
-    margin-left: 15px;
-}
-
-.page-link img {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-}
-
-.page-link-items {
-    display: flex;
-    align-items: center;
-    height: 20px;
-    margin: 8px 5px;
-    cursor: pointer;
-}
-
-.page-link-items img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-left: 11%;
-}
-
-.main-right h2 {
-    margin-left: 10px;
-    font-size: 17px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #8f8e8e;
-}
-
-.page-link-items p {
-    font-size: 13px;
-    margin-left: 10px;
-}
-
-.online {
-    position: relative;
-}
-
-.online::after {
-    content: '';
-    position: absolute;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: rgb(86, 136, 11);
-    bottom: 0;
-    right: 0;
-}
-
-
-/*phần story*/
-.top-box {
-    display: flex;
-    flex-direction: column;
+    align-items: flex-start;
     flex-wrap: wrap;
-    align-content: flex-start;
-
-    overflow: hidden;
-    overflow-x: scroll;
-    width: 60%;
-    height: 280px;
-    padding: 20px 10px;
-    border-radius: 10px;
+    margin: 0 -10px; /* Điều chỉnh margin để chia đều không gian giữa các hình ảnh */
+}
+.pd-images {
+    width: calc(33.33% - 20px); /* Hiển thị 3 ảnh mỗi hàng */
+    margin: 0 10px; /* Điều chỉnh margin để chia đều không gian giữa các hình ảnh */
+    border-radius: 6px;
+    max-width: 100px; /* Đảm bảo kích thước tối đa cho ảnh */
+}
+@media (max-width: 768px) {
+    .pd-images {
+        width: calc(50% - 20px); /* Hiển thị 2 ảnh mỗi hàng khi màn hình nhỏ hơn 768px */
+    }
 }
 
-
-
-.friend-story {
-    width: 140px;
-    height: 100%;
-    margin: 0 5px;
-    overflow: hidden;
-    box-shadow: 0 1px 9px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    border-radius: 10px;
-    transition: 1s;
+@media (max-width: 480px) {
+    .pd-images {
+        width: calc(100% / 3 - 20px); /* Hiển thị 1 ảnh mỗi hàng khi màn hình nhỏ hơn 480px */
+    }
 }
-
-.my-story {
-    width: 150px;
-    height: 100%;
-    margin: 0 5px;
-    overflow: hidden;
-    box-shadow: 0 1px 9px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.friend-story:hover {
-    filter: brightness(70%);
-}
-
-.friend-story img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-
-}
-
-.my-story img {
-    width: 140px;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.upload {
-    width: 100%;
-    height: 60px;
-    position: relative;
-    bottom: 50px;
-    background: white;
-    cursor: pointer;
-}
-
-.upload img {
-    border: 3px solid white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    margin: 0 auto;
-    position: relative;
-    bottom: 15px;
-}
-
-
-
-.upload p {
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    bottom: 10px;
-    font-size: 11px;
+.pd-row div h3 {
+    font-size: 25px;
     font-weight: 600;
 }
-
-.friend-profile {
-    position: relative;
-    bottom: 260px;
-    right: 10px;
-    margin-left: 20px;
+.pd-row div p {
+    font-size: 13px;
 }
-
-.friend-profile img {
-    left: 0;
-    width: 40px;
-    height: 40px;
+.pd-row div img {
+    width: 25px;
     border-radius: 50%;
-    border: 2px solid #45abff;
+    margin-top: 12px;
 }
-
-.friend-name {
-    width: 90%;
-
-    position: relative;
-    bottom: 80px;
-    padding: 0 9px;
-}
-
-.friend-name p {
-    text-shadow: 2px 2px rgba(0, 0, 0, 1);
-    color: white;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 80%;
-    font-weight: 600;
-}
-
-/*create post*/
-.create-slide {
-    margin: 10px;
-}
-
-.create-post {
-    width: 50%;
-    height: auto;
-    background: #fff;
-    border-radius: 7px;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-    margin: 10px 0;
-}
-
-.create-post .ptop {
-    padding: 10px 0;
-    display: flex;
-    align-items: center;
-}
-
-.create-post .ptop img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.ptop input {
-    width: 90%;
-    padding: 10px;
-    margin-left: 20px;
+.pd-right button {
+    background: #1876f2;
     border: 0;
-    outline: none;
-    background: #F0F2F5;
-    border-radius: 30px;
+    outline: 0;
+    padding: 6px 10px;
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    border-radius: 3px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.pd-right button img {
+    height: 15px;
+    margin-right: 10px;
+}
+.pd-right button:first-child {
+    background: #e4e6eb;
+    color: #000;
+}
+.pd-right {
+    text-align: right;
+}
+.pd-right a {
+    background: #e4e6eb;
+    border-radius: 3px;
+    padding: 12px;
+    display: inline-flex;
+    margin-top: 30px;
+}
+.pd-right a img {
+    width: 20px;
+}
+.write-post-container {
+    width: 100%;
+    background: #fff;
+    border-radius: 6px;
+    padding: 20px;
+    color: #626262;
+}
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+.user-profile img {
+    width: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.user-profile p {
+    font-weight: 500;
+    color: #626262;
+}
+.user-profile small {
+    font-size: 12px;
+}
+.post-input-container {
+    padding-left: 55px;
+    padding-top: 20px;
+}
+.post-input-container textarea {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #ccc;
+    background: transparent;
+    resize: none;
+}
+.add-post-links {
+    display: flex;
+    margin-top: 10px;
+}
+.add-post-links a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: #626262;
+    margin-right: 30px;
+    font-size: 13px;
+}
+.add-post-links a img {
+    width: 20px;
+    margin-right: 10px;
+}
+.post-container {
+    width: 100%;
+    background: #fff;
+    border-radius: 6px;
+    padding: 20px;
+    color: #626262;
+    margin: 20px 0;
+}
+.user-profile span {
+    font-size: 13px;
+    color: #9a9a9a;
+}
+.post-text {
+    color: black;
+    margin: 15px 0;
+    font-size: 15px;
+}
+.post-text span {
+    color: #626262;
+    font-weight: 500;
+}
+.post-text a {
+    color: #1876f2;
+    text-decoration: none;
+}
+.post-img {
+    width: 100%;
+    max-height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: unset;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+.post-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.activity-icons div img {
+    width: 18px;
+    margin-right: 10px;
+}
+.activity-icons div {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 30px;
+}
+.post-profile-icon {
+    display: flex;
+    align-items: center;
+}
+.post-profile-icon img {
+    width: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.profile-info {
+    display: flex;
+    align-self: flex-start;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.info-col {
+    flex-basis: 33%;
+}
+.post-col {
+    flex-basis: 65%;
+}
+.profile-intro {
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.profile-intro h3 {
+    font-weight: 600;
+}
+.intro-text {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 15px;
+}
+.intro-text img {
+    width: 15px;
+    margin-bottom: -3px;
+}
+.profile-intro hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 24px 0;
+}
+.profile-intro ul li {
+    list-style: none;
+    font-size: 15px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+}
+.profile-intro ul li img {
+    width: 26px;
+    margin-right: 10px;
+}
+.title-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.title-box a {
+    text-decoration: none;
+    color: #1876f2;
     font-size: 14px;
 }
-
-.pbottom {
-    padding: 5px;
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 0;
-
+.photo-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin-top: 15px;
+}
+.photo-box div img {
+    width: 100%;
+    cursor: pointer;
+}
+.profile-intro p {
+    font-size: 14px;
+}
+.friends-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 10px; 
+    margin-top: 15px;
 }
 
-.pbottom .post-icon {
-    border-radius: 7px;
-    height: 30px;
-    font-weight: 500;
-    font-size: auto;
-    margin-left: 10px;
-    margin-right: 10px;
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.friends-box div img {
+    width: 100%; 
+    cursor: pointer;
+    object-fit: cover; 
+    border-radius: 4px; 
+    height: 100px; 
 }
 
-.pbottom .post-icon:hover {
-    background: #D8DADF;
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .search-box {
+        width: 200px;
+    }
+    .profile-details {
+        flex-direction: column;
+        align-items: center;
+    }
+    .pd-right {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .profile-info {
+        flex-direction: column;
+    }
+    .info-col, .post-col {
+        flex-basis: 100%;
+    }
+    .friends-box, .photo-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.pbottom .post-icon i.red {
-    font-size: auto;
-    color: red;
-    margin-right: 8px;
+/* Styles for Friends and Photos section */
+.friends-box, .photo-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Always 3 items per row */
+    grid-gap: 10px;
+    margin-top: 15px;
 }
 
-.pbottom .post-icon i.green {
-    font-size: auto;
-    color: green;
-    margin-right: 8px;
-}
-
-.pbottom .post-icon i.yellow {
-    font-size: auto;
-    color: orange;
-    margin-right: 8px;
-}
-
-/* các post*/
-.post {
-    margin: 10px 0;
-    width: 50%;
+.friends-box div img, .photo-box div img {
+    width: 100%; /* Ensure images fill the grid item */
     height: auto;
-    background: #fff;
-    border-radius: 7px;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-}
-
-.post-top {
-    margin: 10px 6px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-.post-top .img-owner {
-    display: flex;
-    align-items: center;
-}
-
-.post-top .img-owner img {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
+    cursor: pointer;
     object-fit: cover;
-    object-position: center;
-    margin-right: 8px;
-    cursor: pointer;
+    border-radius: 4px;
 }
 
-.owner-name {
-    font-size: 80%;
-    font-weight: 600;
-    cursor: pointer;
+/* Ensure the grid maintains 3 items per row on smaller screens */
+@media (max-width: 768px) {
+    .friends-box, .photo-box {
+        grid-template-columns: repeat(3, 1fr); /* Ensure 3 items per row */
+    }
 }
 
-.post-detail {
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-.post-detail video {
-    width: 100%;
-    margin-top: 10px;
-    justify-content: center;
-}
-
-.post-detail img {
-    width: 100%;
-    margin-top: 10px;
-    justify-content: center;
-}
-
-.post-text {
-    text-align: start;
-    font-size: 15px;
-    padding: 10px;
-}
-
-
-.interact .emotion-interact {
-    display: flex;
-    align-items: center;
-
-}
-
-.emotion-interact i {
-    color: #45abff;
-    padding-right: 5px;
-
-}
-
-.interact {
-    font-size: auto;
-    overflow-x: hidden;
-    margin: 8px 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-}
-
-.interact-action {
-    cursor: pointer;
-    border-radius: 7px;
-    height: 30px;
-    font-size: auto;
-    margin-left: 7px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.interact-action i {
-    font-size: auto;
-    color: gray;
-    margin-right: 3px;
-}
-
-.interact-action:hover {
-    background: #D8DADF;
-}
-
-.time {
-    font-size: 13px;
+@media (max-width: 480px) {
+    .friends-box, .photo-box {
+        grid-template-columns: repeat(3, 1fr); /* Ensure 3 items per row */
+    }
 }
 
 a {
