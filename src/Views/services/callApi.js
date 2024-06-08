@@ -33,6 +33,114 @@ async function apiSignUp(user) {
     }
 }
 
+async function apiCountAllUser() {
+  try {
+    
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "GET",
+      url: `${URL}/api/users/count-users`,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    throw error;
+  }
+}
+
+async function apiCountUserWeek() {
+  try {
+    
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "GET",
+      url: `${URL}/api/users/count-users-week`,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    throw error;
+  }
+}
+
+async function apiCountUserMonth() {
+  try {
+    
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "GET",
+      url: `${URL}/api/users/count-users-month`,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    throw error;
+  }
+}
+
+async function apiGrowWeek() {
+  try {
+    
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "GET",
+      url: `${URL}/api/users/grow-week`,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    throw error;
+  }
+}
+
+async function apiGrowMonth() {
+  try {
+    
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "GET",
+      url: `${URL}/api/users/grow-month`,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    throw error;
+  }
+}
+
+async function apiGetNewUsers() {
+  try {
+    
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "GET",
+      url: `${URL}/api/users/get-new-users`,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    throw error;
+  }
+}
+
 async function apiLogout(token) {
   try {
     const response = await axios({

@@ -16,7 +16,7 @@
 </head>
 <body>
   <div class="sidebar close">
-    <a href="index.html" class="logo">
+    <a href="fb_home.html" class="logo">
       <img width="50" height="50" src="/public/img/fb_logo.png" alt="">
       <div class="logo-name"><span>Face</span>book</div>
     </a>
@@ -26,7 +26,7 @@
     </ul>
     <ul class="side-menu">
       <li>
-        <a href="#" class="logout" onclick="logout()">
+        <a href="#" class="logout" id="logoutButton">
           <i class="fa-solid fa-right-from-bracket"></i>
           Đăng xuất
         </a>
@@ -38,20 +38,20 @@
       <i class="fa-solid fa-bars icon-menu mx-2"></i>
     </nav>
     <main>
-        <h1>Thống kê người dùng</h1>
+        <h1>Thống kê số lượng đăng ký</h1>
         <div class="analyse">
             <div class="sales">
                 <div class="status">
                     <div class="info">
-                        <h3>Tổng số lượng người dùng</h3>
-                        <h1>123</h1>
+                        <h3>Tổng số tài khoản</h3>
+                        <h1 id="userCount">123</h1>
                     </div>
                     <div class="progress">
                         <svg>
                             <circle cx="38" cy="38" r="36"></circle>
                         </svg>
                         <div class="percentage">
-                            <p>+ 81%</p>
+                            <p>100%</p>
                         </div>
                     </div>
                 </div>
@@ -59,15 +59,15 @@
             <div class="visits">
                 <div class="status">
                     <div class="info">
-                        <h3>Đăng ký trong tuần</h3>
-                        <h1>100</h1>
+                        <h3>Số lượng người dùng đã đăng ký hàng tuần</h3>
+                        <h1 id="userWeek">100</h1>
                     </div>
                     <div class="progress">
                         <svg>
                             <circle cx="38" cy="38" r="36"></circle>
                         </svg>
                         <div class="percentage">
-                            <p>+ 30%</p>
+                            <p id="growWeek">+ 30%</p>
                         </div>
                     </div>
                 </div>
@@ -75,43 +75,23 @@
             <div class="searches">
                 <div class="status">
                     <div class="info">
-                        <h3>Đăng ký trong tháng</h3>
-                        <h1>200</h1>
+                        <h3>Số lượng người dùng đăng ký hàng tháng</h3>
+                        <h1 id="userMonth">200</h1>
                     </div>
                     <div class="progress">
                         <svg>
                             <circle cx="38" cy="38" r="36"></circle>
                         </svg>
                         <div class="percentage">
-                            <p>+ 40%</p>
+                            <p id="growMonth">+ 40%</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="new-users">
-            <h2>Người dùng mới</h2>
-            <div class="user-list">
-                <div class="user">
-                    <img src="/public/img/thm.jpg" alt="">
-                    <h2>Jack</h2>
-                    <p>15 Min Ago</p>
-                </div>
-                <div class="user">
-                    <img src="/public/img/thm.jpg" alt="">
-                    <h2>Jack</h2>
-                    <p>15 Min Ago</p>
-                </div>
-                <div class="user">
-                    <img src="/public/img/jack.jpg" alt="">
-                    <h2>Jack</h2>
-                    <p>15 Min Ago</p>
-                </div>
-                <div class="user">
-                    <img src="/public/img/jack.jpg" alt="">
-                    <h2>Jack</h2>
-                    <p>15 Min Ago</p>
-                </div>
+            <h2>Người dùng đăng ký gần nhất</h2>
+            <div id="user-list" class="user-list">
             </div>
         </div>
     </main>
@@ -132,5 +112,11 @@
     integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="../js/sidebar.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
+  integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../js/class.js"></script>
+  <script src="../services/callApi.js"></script>
+  <script src="../js/adminHT.js"></script>
 </body>
 </html>
