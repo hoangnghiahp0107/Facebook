@@ -12,6 +12,12 @@ const signUp = async (req, res) => {
     try {
         let { SDT, Email, MatKhau, NgaySinh, GioiTinh, HoTen, MaVaiTro, AnhDaiDien, Daxoa, NgayDangKy } = req.body;
         
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
+        if (!passwordRegex.test(MatKhau)) {
+            res.status(400).send("Mật khẩu phải có ít nhất 8 ký tự, bao gồm ít nhất 1 chữ cái thường, 1 chữ cái hoa và 1 ký tự đặc biệt.");
+            return;
+        }
+
         let whereCondition = {};
         if (SDT) {
             whereCondition.SDT = SDT;
@@ -41,7 +47,6 @@ const signUp = async (req, res) => {
         MaVaiTro = MaVaiTro || 2;
         Daxoa = Daxoa || 0;
         NgayDangKy = NgayDangKy || new Date();
-        console.log(NgayDangKy)
 
         let newData = {
             SDT,
@@ -98,13 +103,24 @@ const login = async (req, res) => {
     }
 };
 
-const updateUser = async(req, res) =>{
+const updateUserIF = async(req, res) =>{
     try {
         let { MaNguoiDung } = req.params;
-        let { SDT, Email, MatKhau, NgaySinh, GioiTinh, HoTen, AnhDaiDien } = req.body;
-        const hashedPassword = bcrypt.hashSync(MatKhau, 10);
+        let { SDT, Email, MatKhau, NgaySinh, GioiTinh, HoTen } = req.body;
+        const token = req.headers.token;
+
+        if (!token) {
+            return res.status(401).send("Người dùng không được xác thực");
+        }
+        const decodedToken = jwt.verify(token, 'HOANGNGHIA');
+        const currentUserID = decodedToken.data.MaNguoiDung;
+
+        if (Number(MaNguoiDung) !== currentUserID) {
+            return res.status(403).send("Không có quyền truy cập thông tin người dùng này");
+        }
+
         await model.NguoiDung.update(
-            {SDT, Email, MatKhau:hashedPassword, NgaySinh,GioiTinh,HoTen,AnhDaiDien},
+            {SDT, Email, NgaySinh,GioiTinh,HoTen},
             {
                 where:{
                     MaNguoiDung
@@ -460,7 +476,52 @@ const growMonth = async (req, res) => {
     }
 }
 
+const getUser = async(req, res) =>{
+    try {
+        const token = req.headers.token;
 
+        if (!token) {
+            return res.status(401).send("Người dùng không được xác thực");
+        }
 
+        const decodedToken = jwt.verify(token, 'HOANGNGHIA');
 
-export {signUp, login, updateUser, deleteUser, getUserID, logout, countUser, countUserWeek, countUserMonth, getNewUser, growWeek, growMonth}
+        if (decodedToken.data.MaVaiTro !== 1) {
+            return res.status(403).send("Không có quyền truy cập chức năng này");
+        }
+        const data = await model.NguoiDung.findAll({
+            where:{
+                MaVaiTro: 2
+            },
+            include:["MaVaiTro_VaiTro"]
+        });
+        res.send(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Lỗi khi lấy dữ liệu");
+    }
+}
+const getUserAll = async(req, res) =>{
+    try {
+        const token = req.headers.token;
+
+        if (!token) {
+            return res.status(401).send("Người dùng không được xác thực");
+        }
+
+        const decodedToken = jwt.verify(token, 'HOANGNGHIA');
+
+        if (decodedToken.data.MaVaiTro !== 3) {
+            return res.status(403).send("Không có quyền truy cập chức năng này");
+        }
+        const data = await model.NguoiDung.findAll({
+            include:["MaVaiTro_VaiTro"]
+        });
+        res.send(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Lỗi khi lấy dữ liệu");
+    }
+}
+
+export {signUp, login, updateUserIF, deleteUser, getUserID, logout, countUser, countUserWeek, countUserMonth, getNewUser, growWeek, growMonth, getUser, getUserAll}

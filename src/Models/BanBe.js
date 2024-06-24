@@ -38,6 +38,7 @@ export default class BanBe extends Model {
   }, {
     sequelize,
     tableName: 'BanBe',
+    hasTrigger: true,
     timestamps: false,
     indexes: [
       {

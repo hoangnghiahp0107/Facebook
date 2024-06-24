@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/adminHT.css">
 </head>
 <body>
   <div class="sidebar close">
@@ -23,6 +24,9 @@
     <ul class="side-menu">
       <li><a href="fb_adminHT.html"><i class="fa-solid fa-layer-group"></i>Thống kê</a></li>
 
+    </ul>
+    <ul class="side-menu">
+      <li><a href="fb_adminHTQLND.html"><i class="fa-solid fa-user"></i>Quản lý người dùng</a></li>
     </ul>
     <ul class="side-menu">
       <li>
@@ -93,6 +97,20 @@
             <h2>Người dùng đăng ký gần nhất</h2>
             <div id="user-list" class="user-list">
             </div>
+        </div>
+        <div class="recent-orders">
+          <h2>Bài viết đã kiểm duyệt gần nhất</h2>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Bài viết</th>
+                <th>Người duyệt</th>
+                <th>Thời gian</th>
+                <th>Trạng thái kiểm duyệt</th>
+              </tr>
+            </thead>
+            <tbody id="tblDanhSachBVNews"></tbody>
+          </table>
         </div>
     </main>
   </div>

@@ -1,0 +1,21 @@
+@media screen and (max-width: 1200px) {
+    .container{
+        width: 95%;
+        grid-template-columns: 7rem auto 23rem;
+    }
+    main .analyse{
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    main .new-users .user-list .user{
+        flex-basis: 40%;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    main .analyse .progress{
+        width: 110px;
+        height: 92px;
+        border-radius: 0%;
+    }
+}

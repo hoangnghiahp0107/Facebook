@@ -43,6 +43,7 @@ export default class ChiaSe extends Model {
   }, {
     sequelize,
     tableName: 'ChiaSe',
+    hasTrigger: true,
     timestamps: false,
     indexes: [
       {

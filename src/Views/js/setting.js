@@ -46,6 +46,14 @@ async function getUser(userID) {
     }
 }
 
+function updateInfo(user){
+    const avatarImgs = document.querySelectorAll("#avatarPreview");
+    const nameUser = document.querySelectorAll("#username");
+    const emailUser = document.querySelectorAll("#email");
+    const phoneUser = document.querySelectorAll("#phone");
+    const sexUser = document.querySelectorAll("#sex");   
+}
+
 function renderInfo(user) {
     const avatarImgs = document.querySelectorAll("#avatarPreview");
     const nameUser = document.querySelectorAll("#username");
@@ -89,3 +97,23 @@ function renderInfo(user) {
         }
     })
 }
+
+function logout() {
+    localStorage.removeItem('localStorageToken');
+    window.location.href = "fb_signin.html";
+}
+
+async function logout() {
+    try {
+      const token = localStorage.getItem("localStorageToken");
+      await apiLogout(token);
+      localStorage.removeItem("localStorageToken");
+      window.location.href = "fb_signin.html"; 
+    } catch (error) {
+      console.error(error);
+    }
+}
+  
+document.getElementById("logoutButton").addEventListener("click", function() {
+    logout();
+});

@@ -52,6 +52,17 @@ async function getUser() {
             user.NgayDangKy
         ));
         renderNewsUser(userObj);
+        const posts = await apiGetPostsNew();
+        const postObj = posts.map((post) => new KiemDuyet(
+            post.MaKiemDuyet, 
+            post.BaiVietID,
+            post.NguoiDuyet,
+            post.TrangThaiKiemDuyet,
+            post.ThoiGian,
+            post.NguoiDuyet_NguoiDung,
+            post.BaiViet
+        ))
+        renderNewsPost(postObj);
     } catch (error) {
         console.log("Lỗi từ máy chủ");
     }
@@ -95,8 +106,43 @@ function renderNewsUser(users) {
     document.getElementById("user-list").innerHTML = html;
 }
 
+function renderNewsPost(posts) {
+    const currentTime = new Date(); // Thời gian hiện tại
 
+    const html = posts.reduce((result, post) => {
+        const registrationDate = new Date(post.ThoiGian);
+        const timeDifference = Math.floor((currentTime - registrationDate) / (1000 * 60));
 
+        // Hàm chuyển đổi số phút thành đơn vị thời gian tương ứng
+        const formatTimeDifference = (difference) => {
+            if (difference < 60) {
+                return `${difference} phút trước`;
+            } else if (difference < 1440) {
+                const hours = Math.floor(difference / 60);
+                return `${hours} giờ trước`;
+            } else if (difference < 43200) {
+                const days = Math.floor(difference / 1440);
+                return `${days} ngày trước`;
+            } else {
+                const months = Math.floor(difference / 43200);
+                return `${months} tháng trước`;
+            }
+        };
+      return (
+        result +
+        `
+            <tr>
+                <td>${post.BaiVietID}</td>
+                <td>${post.NguoiDuyet_NguoiDung.HoTen}</td>
+                <td>${formatTimeDifference(timeDifference)}</td>
+                <td>${post.TrangThaiKiemDuyet}</td>
+            </tr>
+        `
+      );
+    }, "");
+  
+    document.getElementById("tblDanhSachBVNews").innerHTML = html;
+}
 
 function renderTotalUser(totalUsers) {
     const userCountElement = document.getElementById("userCount");

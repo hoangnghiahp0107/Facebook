@@ -50,10 +50,16 @@ export default class NguoiDung extends Model {
       type: DataTypes.BOOLEAN,
       allowNull: true,
       defaultValue: false
+    },
+    NgayDangKy: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.Sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
     sequelize,
     tableName: 'NguoiDung',
+    hasTrigger: true,
     timestamps: false,
     indexes: [
       {

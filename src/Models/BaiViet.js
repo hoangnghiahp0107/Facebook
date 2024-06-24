@@ -39,10 +39,16 @@ export default class BaiViet extends Model {
         model: 'CheDoRiengTu',
         key: 'MaCheDo'
       }
+    },
+    TrangThaiKiemDuyet: {
+      type: DataTypes.ENUM('ChoKiemDuyet','DaKiemDuyet','BiTuChoi'),
+      allowNull: false,
+      defaultValue: "ChoKiemDuyet"
     }
   }, {
     sequelize,
     tableName: 'BaiViet',
+    hasTrigger: true,
     timestamps: false,
     indexes: [
       {
