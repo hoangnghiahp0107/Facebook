@@ -374,3 +374,81 @@ async function apiUpdateUserAD(userID, user) {
     throw error;
   }
 }
+
+//Get các thông báo
+async function apiGetNotifications(){
+  try{
+  const localStorageToken = localStorage.getItem("localStorageToken");
+  const response = await axios({
+    method: "GET",
+    url: `${URL}/api/notification/get-notifications`,
+    headers:{  token:localStorageToken,},
+  });
+  return response.data;
+  }
+  catch(error) {
+    throw error;
+  }
+}
+
+//Get thông tin người liên hệ
+async function apiGetReceiver(userID) {
+  try {
+      const localStorageToken = localStorage.getItem("localStorageToken");
+      const response = await axios({
+          method: "GET",
+          url: `${URL}/api/chats/get-receiver/${userID}`,
+          headers: {
+              token: localStorageToken,
+          },
+      });
+      return response.data;
+  } catch (error) {
+     console.log('lỗi danh sách người nhận');
+      throw error;
+  }
+}
+
+//Get các cuộc hội thoại
+async function apiGetMes(userID,receiverID) {
+  try {
+      const localStorageToken = localStorage.getItem("localStorageToken");
+      const response = await axios({
+          method: "GET",
+          url: `${URL}/api/chats/get-messages/${userID}/${receiverID}`,
+          headers: {
+              token: localStorageToken,
+          },
+      });
+      return response.data;
+  } catch (error) {
+     console.log(`lỗi lấy tin nhắn cảu ${userID} và ${receiverID}`);
+      throw error;
+  }
+}
+
+//Post Tin nhắn mới 
+async function apiPostMes(userID, receiverID, messageContent) {
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "POST",
+      url: `${URL}/api/chats/post-messages/${userID}/${receiverID}`,
+      headers: {
+        token: localStorageToken,
+        'Content-Type': 'application/json'
+      },
+      data: {
+        NoiDung: messageContent
+      }
+    });
+
+    if (response.status === 200) {
+      console.log("Message sent successfully:", response.data);
+    } else {
+      console.log("Failed to send message:", response.data);
+    }
+  } catch (error) {
+    console.error("Error sending message:", error);
+  }
+}

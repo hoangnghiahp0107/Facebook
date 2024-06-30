@@ -38,3 +38,31 @@ class KiemDuyet {
         this.BaiViet = BaiViet;
     }
 }
+
+class Chat{
+    constructor(MaTinNhan,MaNguoiGui,MaNguoiNhan,NoiDungChat,ThoiGian,NguoiNhan_AnhDaiDien){
+        this.MaTinNhan = MaTinNhan;
+        this.MaNguoiGui = MaNguoiGui;
+        this.MaNguoiNhan = MaNguoiNhan;
+        this.NoiDungChat = NoiDungChat;
+        this.ThoiGian = ThoiGian;
+        this.NguoiNhan_AnhDaiDien= NguoiNhan_AnhDaiDien;
+    }
+}
+
+class ThongBao{
+    constructor(MaThongBao,MaNguoiNhan,NoiDungThongBao,ThoiGian){
+        this.MaThongBao = MaThongBao;
+        this.MaNguoiNhan = MaNguoiNhan;
+        this.NoiDungThongBao = NoiDungThongBao;
+        this.ThoiGian = ThoiGian;
+    }
+}
+
+class NguoiNhan{
+    constructor(MaNguoiNhan,HoTen,AnhDaiDien){
+        this.MaNguoiNhan=MaNguoiNhan;
+        this.HoTen=HoTen;
+        this.AnhDaiDien=AnhDaiDien;
+    }
+}

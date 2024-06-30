@@ -26,10 +26,31 @@
             <i class="fa-solid fa-shop"></i>
             <i class="fa-solid fa-users-line"></i>
         </div>
+        
         <div class="nav-right">
             <i class="fa-solid fa-bars"></i>
-            <i class="fa-solid fa-message"></i>
-            <i class="fa-solid fa-bell"></i>
+            <i class="fa-solid fa-message" id="messengerButton"></i>
+            <i class="fa-solid fa-bell" onclick="openNotifications()" ></i>
+          <!-- Drop down Thong bao-->
+            <div class="card-noti" id="notificationWarp">
+
+                  <h4 style="margin-bottom: 10px;">Notifications</h4>
+                  <hr>
+                  
+                  <!--Danh sách thông báo-->
+              <div class="noti-container"> 
+                <!--Item thông báo-->
+                <div class="noti-items">
+                  <img src="../../../public/img/fb_logo.png">
+                  <div class="noti-detail">
+                      <h3>Bài viết của bạn đã nhận được một cảm xúc mới!</h3>
+                      <p>2024-06-07 03:27:14</p>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
 
             <!-- Drop down profile menu-->
             <img id="avarta" onclick="openCard()">
@@ -64,7 +85,8 @@
                 </a>
               </div>
             </div>  
-        </div>
+        
+          </div>
         </nav>
 
       <!--GIAO DIỆN HIỆN THỊ CHÍNH-->
@@ -370,7 +392,6 @@
                  <hr>
                  <!-- DANH SÁCH BẠN BÈ ĐANG ONLINE-->
                  <div class="contact-selection">
-                  <h2>Contacts</h2>
 
                    <!-- LOAD THÊM BẠN BÈ Ở ĐÂY-->
                   <div class="page-link">
@@ -380,75 +401,6 @@
                     <p>NGUYỄN HOÀNG NGHĨA</p>
                   </div>
 
-                  <div class="page-link">
-                    <div class="online">
-                      <img src="/public/img/noimg.png" alt="">
-                    </div>
-                    <p>NGUYỄN QUỐC VIỆT</p>
-                  </div>
-
-                  <div class="page-link">
-                    <div class="online">
-                      <img src="/public/img/noimg.png" alt="">
-                    </div>
-                    <p>THÁI HIẾU MINH</p>
-                  </div>
-
-                  <div class="page-link">
-                    <div class="online">
-                      <img src="/public/img/noimg.png" alt="">
-                    </div>
-                    <p>THÁI HIẾU MINH</p>
-                  </div>
-
-                  <div class="page-link">
-                    <div class="online">
-                      <img src="/public/img/noimg.png" alt="">
-                    </div>
-                    <p>THÁI HIẾU MINH</p>
-                  </div>
-
-                  <div class="page-link">
-                    <div class="online">
-                      <img src="/public/img/noimg.png" alt="">
-                    </div>
-                    <p>THÁI HIẾU MINH</p>
-                  </div>
-
-                  <div class="page-link">
-                    <div class="online">
-                      <img src="/public/img/noimg.png" alt="">
-                    </div>
-                    <p>THÁI HIẾU MINH</p>
-                  </div>
-
-                  <div class="page-link">
-                    <div class="online">
-                      <img src="/public/img/fb_logo.png" alt="">
-                    </div>
-                    <p>THÁI HIẾU MINH</p>
-                  </div>
-
-                  <div class="page-link">
-                    <div class="online">
-                      <img src="/public/img/fb_logo.png" alt="">
-                    </div>
-                    <p>THÁI HIẾU MINH</p>
-                  </div>
-
-                  <div class="page-link">
-                    <div class="online">
-                      <img src="/public/img/fb_logo.png" alt="">
-                    </div>
-                    <p>SHIGEO TOKUDA</p>
-                  </div>
-
-                  <div class="page-link">
-                    <div class="online">
-                      <img src="/public/img/fb_logo.png" alt="">
-                    </div>
-                    <p>YUA MIKAMI</p>
-                  </div>
                  </div>
       </div>
     </div>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Messenger Layout</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="../css/messenger.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css">
+
+  </head>
+  <body>
+    
+
+
+    <div class="container-fluid">
+      <div class="row h-100">
+      <div class="col-md-1 col-sm-1 col-1 navigator" >
+            <img class="my-avatar" id="messenger-avatar" alt="avarta">
+      </div>
+        <div class="col-md-2 col-sm-3 col-2 friend-list">
+          <!-- Add friend list items here -->
+          <ul class="list-unstyled">
+          <li><img class="contact-avatar" id="contact-avatar" src="res/user_logo.jpg"> <a href="#" id="contact-name">Friend 1</a> </li>
+        
+     
+          <!-- Add more friends -->
+          </ul>
+
+          
+        </div>
+        <div class="col-md-8 col-sm-8 col-8 chat-window">
+
+          <div class="message-container">
+            <!-- Messages will appear here -->
+           
+            
+          
+            
+            <!-- Add more messages -->
+          </div>
+
+          <div class="input-container">
+            <div class="additions">
+              <i class="fa-solid fa-notes-medical"></i>
+              <i class="fa-solid fa-photo-film"></i>
+              <i class="fa-solid fa-microphone"></i>
+            </div>
+            <Input type="text" placeholder="Aa" id="inputchat"> </Input>
+            <button id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap Modal for popup menu -->
+<div class="modal fade" id="popupMenu" tabindex="-1" role="dialog" aria-labelledby="popupMenuLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="popupMenuLabel">Popup Menu</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Menu items -->
+        <ul class="list-unstyled">
+          <li id="home-btn"><a href="#">Home</a></li>
+          <li id="logout-btn"><a href="#">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
+    integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="../js/class.js"></script>
+    <script src="../services/callApi.js"></script>
+    <script src="../js/messenger.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
+  </body>
+</html>

@@ -87,6 +87,31 @@ document.getElementById("logoutButton").addEventListener("click", function() {
     logout();
 });
 
+// Chuyển tới messenger
+document.getElementById("messengerButton").addEventListener("click", function(){
+    window.location.href = "fb_messenger.html";
+});
+
+// Mở menu người dùng
+function openCard(){
+    var cardWarp =document.getElementById('cardWarp')
+    var notificationWarp = document.getElementById('notificationWarp')
+    cardWarp.classList.toggle('open-menu');
+    if(notificationWarp.classList.toggle('open-noti')){
+        notificationWarp.classList.toggle('open-noti')
+    }
+}
+
+//Mở menu thông báo
+function openNotifications(){
+    var cardWarp =document.getElementById('cardWarp')
+    var notificationWarp = document.getElementById('notificationWarp')
+    notificationWarp.classList.toggle('open-noti')
+    if(  cardWarp.classList.toggle('open-menu')){
+        cardWarp.classList.toggle('open-menu');
+    }
+}
+
 
 
 
