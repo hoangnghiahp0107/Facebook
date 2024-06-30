@@ -59,7 +59,7 @@ function renderPosts(posts) {
 
         // Kiểm tra TrangThaiKiemDuyet để quyết định hiển thị nút Duyệt và Xóa
         let actionButtons = '';
-        if (post.TrangThaiKiemDuyet === 'Chờ kiểm duyệt') {
+        if (post.TrangThaiKiemDuyet === 'Chờ duyệt') {
             actionButtons = `
                 <div class="d-flex justify-content-center align-items-center">
                     <button class="btn btn-success mx-2" onclick="accessPost('${post.MaBV}') "><i class="fa-solid fa-check" style="font-size: 20px"></i></button>

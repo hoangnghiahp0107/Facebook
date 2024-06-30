@@ -54,113 +54,97 @@
                     </div>
                 </th>
                 <th class="d-flex justify-content-end" style="margin-right: 30px;">
-                    <div class="search-bar">
-                        <form class="search d-flex justify-content-center align-items-center">
-                          <i class="fa-solid fa-magnifying-glass"></i>
-                          <input type="search" placeholder="Tìm kiếm người dùng" name="search"/>
-                        </form>
+                    <div class="search-bar"> <i class="fa-solid fa-magnifying-glass"></i>
+                      <input type="search" placeholder="Tìm kiếm người dùng" name="search"/>
                     </div>
                 </th>
             </thead>
         </table>
-        <table class="table table-bordered">
-            <thead>
-                <th>ID</th>
-                <th>SDT</th>
-                <th>Email</th>
-                <th>Ngày sinh</th>
-                <th>Giới tính</th>
-                <th>Họ tên</th>
-                <th class="d-flex justify-content-center">Ảnh đại diện</th>
-                <th>Vai trò</th>
-                <th class="d-flex justify-content-center">Đã xóa</th>
-                <th></th>
-            </thead>
-            <tbody id="tblDanhSachND"></tbody>
-        </table>
-        <div class="modal fade" id="myModal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3>Đăng kí tài khoản</h3>
-              </div>
-              <div class="modal-body">
-                <form id="signupForm" enctype="multipart/form-data" class="form-group">
+        <div class="info-ND">
+            <div class="modal-body">
+                <form id="updateForm" enctype="multipart/form-data" class="form-group">
                   <div class="input-group">
-                    <input type="text" name="account" id="tai_khoan" class="form-control input-sm" placeholder="Tài khoản">
+                    <input type="text" name="account" id="email" class="form-control input-sm" placeholder="Email">
                   </div>
                   <span class="sp-thongbao text-danger" id="tbAccount">&zwj;</span>
                   <br>
                   <div class="input-group">
-                    <input type="text" name="name" id="ho_ten" class="form-control input-sm" placeholder="Họ tên">
+                    <input type="text" name="account" id="phone" class="form-control input-sm" placeholder="Số điện thoại">
+                  </div>
+                  <span class="sp-thongbao text-danger" id="tbAccount">&zwj;</span>
+                  <div class="input-group">
+                    <input type="text" name="name" id="hoTen" class="form-control input-sm" placeholder="Họ tên">
                   </div>
                   <span class="sp-thongbao text-danger" id="tbName">&zwj;</span>
                   <br>
                   <div class="input-group">
-                    <input type="password" name="password" id="mat_khau" class="form-control input-sm" placeholder="Mật khẩu">
+                    <input type="password" name="password" id="matKhau" class="form-control input-sm" placeholder="Mật khẩu">
                   </div>
                   <span class="sp-thongbao text-danger" id="tbPassword">&zwj;</span>
                   <br>
                   <h5>Ngày sinh</h5>
-                  <select id="day">
-                    <!-- Populate days -->
-                    <option value="">Ngày</option>
-                  </select>
-                  <select id="month">
-                    <option value="01">Jan</option>
-                    <option value="02">Feb</option>
-                    <option value="03">Mar</option>
-                    <option value="04">Apr</option>
-                    <option value="05">May</option>
-                    <option value="06">Jun</option>
-                    <option value="07">Jul</option>
-                    <option value="08">Aug</option>
-                    <option value="09">Sep</option>
-                    <option value="10">Oct</option>
-                    <option value="11">Nov</option>
-                    <option value="12">Dec</option>
-                  </select>
-                  <select id="year">
-                    <!-- Populate years -->
-                    <option value="">Năm</option>
-                  </select>
-                  <span class="sp-thongbao text-danger" id="tbAge">&zwj;</span>
+                    <select id="day" class="bg-white">
+                    </select>
+                    <select id="month" class="bg-white">
+                        <option value="01">Jan</option>
+                        <option value="02">Feb</option>
+                        <option value="03">Mar</option>
+                        <option value="04">Apr</option>
+                        <option value="05">May</option>
+                        <option value="06">Jun</option>
+                        <option value="07">Jul</option>
+                        <option value="08">Aug</option>
+                        <option value="09">Sep</option>
+                        <option value="10">Oct</option>
+                        <option value="11">Nov</option>
+                        <option value="12">Dec</option>
+                    </select>
+                    <select id="year" class="bg-white">
+                    </select>
+                  <span class="sp-thongbao text-danger" id="tbRole">&zwj;</span>
                   <br>
                   <h5>Giới tính</h5>
-                  <div class="d-flex justify-content-start align-items-center">
-                    <div class="female" id="all_gender">
-                      <label for="female">Female</label>
-                      <input type="radio" name="gender" id="female" value="Nu"/>
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="female bg-white" id="all_gender">
+                            <label for="female">Female</label>
+                            <input type="radio" name="gender" value="Nu"/>
+                        </div>
+                        <div class="male bg-white" id="all_gender">
+                            <label for="male">Male</label>
+                            <input type="radio" name="gender" value="Nam"/>
+                        </div>
+                        <div class="other bg-white" id="all_gender">
+                            <label for="other">Custom</label>
+                            <input type="radio" name="gender" value="Khac"/>
+                        </div>
                     </div>
-                    <div class="male" id="all_gender">
-                      <label for="male">Male</label>
-                      <input type="radio" name="gender" id="male" value="Nam"/>
-                    </div>
-                    <div class="other" id="all_gender">
-                      <label for="other">Custom</label>
-                      <input type="radio" name="gender" id="other" value="Khac"/>
-                    </div>
-                  </div>
-                  <span class="sp-thongbao text-danger" id="tbSex">&zwj;</span>
                   <br>
                   <h5>Hình ảnh</h5>
                   <div class="input-group">
                     <input type="file" id="anh_dai_dien" name="AnhDaiDien">
                   </div>
+                  <span class="sp-thongbao text-danger" id="tbImage">&zwj;</span>
+                  <h5>Đã xóa</h5>
+                  <div class="d-flex justify-content-start align-items-center">
+                    <div class="male bg-white" id="delete_user">
+                      <label for="none_delete">Chưa xóa</label>
+                      <input type="radio" name="deleteUser" value="false"/>
+                    </div>
+                    <div class="other bg-white" id="delete_user">
+                        <label for="delete">Xóa</label>
+                        <input type="radio" name="deleteUser" value="true"/>
+                    </div>
+                  </div>
+                  
                   <div class="modal-content-popup"></div>
                 </form>
                 <div class="modal-footer">
-                  <button id="btnThemUS" type="button" onclick="createAccount()" class="btn btn-dark">Đăng kí</button>
+                  <button id="updateButton" type="button" class="btn btn-info">Cập nhật</button>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-        
     </main>
   </div>
-  <div id="pagination" class="d-flex justify-content-center mt-3"></div>
-
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -179,7 +163,7 @@
   <script src="../js/sidebar.js"></script>
   <script src="../js/class.js"></script>
   <script src="../services/callApi.js"></script>
-  <script src="../js/adminQLND.js"></script>
+  <script src="../js/adminUpdateND.js"></script>
   <script>
     const monthSelect = document.getElementById('month');
     const daySelect = document.getElementById('day');

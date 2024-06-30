@@ -11,6 +11,10 @@
     --success: #300E3C;
 }
 
+.btn{
+    cursor: pointer;
+}
+
 svg{
     background: white;
 }
@@ -377,7 +381,7 @@ main .new-users .user-list .user img{
     }
 }
 
-#all_gender{
+#all_gender, #delete_user{
     width: 110px;
     margin: 0px 20px 0px 0px;
     border: 1px solid #aaa;
@@ -392,5 +396,5 @@ select{
     border: 1px solid #aaa;
     border-radius: 5px;
     font-size: 15px;
-    margin: 10px 15px 15px 0px;
+    margin: 10px 15px 5px 0px;
 }

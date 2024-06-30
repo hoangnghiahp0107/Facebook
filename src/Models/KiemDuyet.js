@@ -30,7 +30,7 @@ export default class KiemDuyet extends Model {
       type: DataTypes.ENUM('DaKiemDuyet','BiTuChoi'),
       allowNull: false
     },
-    ThoiGian: {
+    ThoiGianKiemDuyet: {
       type: DataTypes.DATE,
       allowNull: true,
       defaultValue: Sequelize.Sequelize.literal('CURRENT_TIMESTAMP')

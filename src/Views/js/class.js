@@ -28,12 +28,12 @@ class BaiViet {
 }
 
 class KiemDuyet {
-    constructor(MaKiemDuyet, BaiVietID, NguoiDuyet, TrangThaiKiemDuyet, ThoiGian, NguoiDuyet_NguoiDung, BaiViet) {
+    constructor(MaKiemDuyet, BaiVietID, NguoiDuyet, TrangThaiKiemDuyet, ThoiGianKiemDuyet, NguoiDuyet_NguoiDung, BaiViet) {
         this.MaKiemDuyet = MaKiemDuyet;
         this.BaiVietID = BaiVietID;
         this.NguoiDuyet = NguoiDuyet; 
         this.TrangThaiKiemDuyet = TrangThaiKiemDuyet;
-        this.ThoiGian = ThoiGian;
+        this.ThoiGianKiemDuyet = ThoiGianKiemDuyet;
         this.NguoiDuyet_NguoiDung = NguoiDuyet_NguoiDung;
         this.BaiViet = BaiViet;
     }

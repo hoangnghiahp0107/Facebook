@@ -190,8 +190,7 @@ const accessPostStatus = async (req, res) => {
         const newKiemDuyet = {
             BaiVietID: post.MaBV,
             NguoiDuyet: decodedToken.data.MaNguoiDung, 
-            TrangThaiKiemDuyet: 'DaKiemDuyet', 
-            ThoiGian: post.ThoiGian
+            TrangThaiKiemDuyet: 'DaKiemDuyet'
         };
 
         const createdKiemDuyet = await model.KiemDuyet.create(newKiemDuyet);
@@ -246,8 +245,7 @@ const denyPostStatus = async (req, res) => {
         const newKiemDuyet = {
             BaiVietID: post.MaBV,
             NguoiDuyet: decodedToken.data.MaNguoiDung, 
-            TrangThaiKiemDuyet: 'BiTuChoi', 
-            ThoiGian: post.ThoiGian
+            TrangThaiKiemDuyet: 'BiTuChoi'
         };
 
         const createdKiemDuyet = await model.KiemDuyet.create(newKiemDuyet);
@@ -279,12 +277,11 @@ const getPostsNew = async (req, res) => {
         }
 
         const kiemduyets = await model.KiemDuyet.findAll({
-            order: [['ThoiGian', 'DESC']],
+            order: [['ThoiGianKiemDuyet', 'DESC']],
             limit: 4,
             include:["NguoiDuyet_NguoiDung"]});
 
         res.send(kiemduyets);
-        console.log(kiemduyets)
     } catch (error) {
         console.log(error);
         return res.status(500).send("Lỗi xác thực token");

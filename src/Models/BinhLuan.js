@@ -38,7 +38,6 @@ export default class BinhLuan extends Model {
   }, {
     sequelize,
     tableName: 'BinhLuan',
-    hasTrigger: true,
     timestamps: false,
     indexes: [
       {

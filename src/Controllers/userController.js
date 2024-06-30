@@ -103,10 +103,40 @@ const login = async (req, res) => {
     }
 };
 
+const updateUser = async(req, res) =>{
+    try {
+        let { MaNguoiDung } = req.params;
+        let { SDT, Email, MatKhau, NgaySinh, GioiTinh, HoTen, Daxoa } = req.body;
+        const token = req.headers.token;
+
+        if (!token) {
+            return res.status(401).send("Người dùng không được xác thực");
+        }
+        const decodedToken = jwt.verify(token, 'HOANGNGHIA');
+        const currentUserID = decodedToken.data.MaNguoiDung;
+
+        if (Number(MaNguoiDung) !== currentUserID) {
+            return res.status(403).send("Không có quyền truy cập thông tin người dùng này");
+        }
+
+        await model.NguoiDung.update(
+            {SDT, Email, MatKhau, NgaySinh, GioiTinh, HoTen, Daxoa},
+            {
+                where:{
+                    MaNguoiDung
+                }
+            }
+        );
+        res.status(200).send("Cập nhật thành công!");
+    } catch (error) {
+        
+    }
+}
+
 const updateUserIF = async(req, res) =>{
     try {
         let { MaNguoiDung } = req.params;
-        let { SDT, Email, MatKhau, NgaySinh, GioiTinh, HoTen } = req.body;
+        let { SDT, Email, NgaySinh, GioiTinh, HoTen } = req.body;
         const token = req.headers.token;
 
         if (!token) {
@@ -136,6 +166,17 @@ const updateUserIF = async(req, res) =>{
 
 const deleteUser = async (req, res) => {
     try {
+        const token = req.headers.token;
+
+        if (!token) {
+            return res.status(401).send("Người dùng không được xác thực");
+        }
+
+        const decodedToken = jwt.verify(token, 'HOANGNGHIA');
+        if (decodedToken.data.MaVaiTro !== 1) {
+            return res.status(403).send("Không có quyền truy cập chức năng này");
+        }
+
         let { MaNguoiDung } = req.params;
         await model.NguoiDung.update(
             { Daxoa: 1 },
@@ -160,17 +201,18 @@ const getUserID = async (req, res) => {
         if (!token) {
             return res.status(401).send("Người dùng không được xác thực");
         }
+        
         const decodedToken = jwt.verify(token, 'HOANGNGHIA');
         const currentUserID = decodedToken.data.MaNguoiDung;
-
-        if (Number(MaNguoiDung) !== currentUserID) {
+        if (Number(MaNguoiDung) !== currentUserID && (decodedToken.data.MaVaiTro !== 1 && decodedToken.data.MaVaiTro !== 3)) {
             return res.status(403).send("Không có quyền truy cập thông tin người dùng này");
         }
-
+            
         const data = await model.NguoiDung.findOne({
             where: {
                 MaNguoiDung: MaNguoiDung
-            }
+            },
+            attributes: { exclude: ['MatKhau']} 
         });
 
         if (!data) {
@@ -501,6 +543,7 @@ const getUser = async(req, res) =>{
         res.status(500).send("Lỗi khi lấy dữ liệu");
     }
 }
+
 const getUserAll = async(req, res) =>{
     try {
         const token = req.headers.token;
@@ -517,11 +560,39 @@ const getUserAll = async(req, res) =>{
         const data = await model.NguoiDung.findAll({
             include:["MaVaiTro_VaiTro"]
         });
-        res.send(data);
+        res.status(200).send(data);
     } catch (error) {
         console.error(error);
         res.status(500).send("Lỗi khi lấy dữ liệu");
     }
 }
 
-export {signUp, login, updateUserIF, deleteUser, getUserID, logout, countUser, countUserWeek, countUserMonth, getNewUser, growWeek, growMonth, getUser, getUserAll}
+const getSearchUser = async (req, res) => {
+    const { searchParam } = req.params;
+    const data = await model.NguoiDung.findAll({
+        where: {
+            MaVaiTro: 2,
+            [Op.or]: [
+                {
+                    Email: {
+                        [Op.like]: `%${searchParam}%`
+                    }
+                },
+                {
+                    Sdt: {
+                        [Op.like]: `%${searchParam}%`
+                    }
+                },
+                {
+                    HoTen:{
+                        [Op.like]: `%${searchParam}%`
+                    }
+                }
+            ]
+        },
+        include:["MaVaiTro_VaiTro"],
+    });
+    res.status(200).send(data);
+}
+
+export {signUp, login, updateUserIF, deleteUser, getUserID, logout, countUser, countUserWeek, countUserMonth, getNewUser, growWeek, growMonth, getUser, getUserAll, getSearchUser}
