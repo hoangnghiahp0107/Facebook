@@ -288,4 +288,63 @@ const getPostsNew = async (req, res) => {
     }
 }
 
-export { getPostPublic, getPostFriend, getPostPrivate, getPostForMe, getPostAll, accessPostStatus, denyPostStatus, getPostsNew };
+const seePost = async(req, res) =>{
+    try {
+        const TruyXuatID = req.params.NguoiDungID; 
+        const token = req.headers.token;
+
+        if (!token) {
+            return res.status(401).send("Người dùng không được xác thực");
+        }
+        
+        const isFriend = await model.BanBe.findAll({
+            where: {
+               MaNguoiDung1: TruyXuatID,
+               TrangThai: "DaKetBan"
+            }
+        });
+
+        if (!isFriend) {
+            return res.status(403).send("Bạn không có quyền xem bài viết này");
+        }
+
+        const data = await model.BaiViet.findAll({
+            where: {
+                CheDoRiengTuID: {
+                    [Op.in]: [1, 2, 3]
+                },
+                TrangThaiKiemDuyet: "DaKiemDuyet"
+            },
+            include:"NguoiDung"
+        });
+
+        res.status(200).send(data);
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Lỗi khi lấy dữ liệu");
+    }
+} 
+
+const deletePost= async(req,res) =>{
+    try {
+        let {MaBV} = req.params;
+        await model.KiemDuyet.destroy({
+            where:{
+                BaiVietID: MaBV
+            }
+        })
+        await model.BaiViet.destroy({
+            where:{
+                MaBV: MaBV
+            }
+        });
+
+        res.status(200).send("Xóa bài viết thành công!");
+    } catch(error) {
+        console.log(error);
+        res.status(500).send("Đã có lỗi trong quá trình xử lý!")
+    }
+};
+
+export { getPostPublic, getPostFriend, getPostPrivate, getPostForMe, getPostAll, accessPostStatus, denyPostStatus, getPostsNew, seePost, deletePost};

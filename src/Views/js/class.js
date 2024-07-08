@@ -66,3 +66,13 @@ class NguoiNhan{
         this.AnhDaiDien=AnhDaiDien;
     }
 }
+
+class Story{
+    constructor(MaStory, NguoiDung, HinhAnh, ThoiGian, CheDoRiengTuID){
+        this.MaStory = MaStory;
+        this.NguoiDung = NguoiDung;
+        this.HinhAnh = HinhAnh;
+        this.ThoiGian = ThoiGian;
+        this.CheDoRiengTuID = CheDoRiengTuID;
+    }
+}

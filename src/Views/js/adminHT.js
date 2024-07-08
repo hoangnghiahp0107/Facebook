@@ -109,7 +109,7 @@ function renderNewsUser(users) {
 function renderNewsPost(posts) {
     const currentTime = new Date(); // Thời gian hiện tại
 
-    const html = posts.reduce((result, post) => {
+    const html = posts.reduce((result, post, index) => {
         const registrationDate = new Date(post.ThoiGian);
         const timeDifference = Math.floor((currentTime - registrationDate) / (1000 * 60));
 
@@ -132,7 +132,7 @@ function renderNewsPost(posts) {
         result +
         `
             <tr>
-                <td>${post.BaiVietID}</td>
+                <td>${index+1}</td>
                 <td>${post.NguoiDuyet_NguoiDung.HoTen}</td>
                 <td>${formatTimeDifference(timeDifference)}</td>
                 <td>${post.TrangThaiKiemDuyet}</td>

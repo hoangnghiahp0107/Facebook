@@ -18,4 +18,15 @@
         height: 92px;
         border-radius: 0%;
     }
+
+    main .new-users .user-list{
+        margin: 0px;
+        padding: 10px;
+    }
+    main .new-users .user-list h2{
+        font-size: 15px;
+    }
+    .recent-orders{
+        margin-top: 30px;
+    }
 }

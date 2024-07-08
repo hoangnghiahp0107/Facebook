@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../css/home_style.css">
+    
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css">
   </head>
   <body>
@@ -141,36 +142,7 @@
               </div>
 
                   <!--MỤC STORY CỦA BẠN BÈ (LOAD THÊM CÁC STORY Ở ĐÂY NHA )-->
-              <div class="friend-story">
-                <img src="https://scontent.fsgn5-2.fna.fbcdn.net/v/t39.30808-6/330973513_1465155017225102_473752433944556874_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=lDedUfsje5wQ7kNvgG_A29f&_nc_ht=scontent.fsgn5-2.fna&oh=00_AYCX8IgzaAD3ifqVfLZCUmgGx8xE_Zlm3alnFRZwKtDU4w&oe=6658F8A9" alt="">
-                    <div class="friend-profile">
-                     <img src="https://scontent.fsgn5-2.fna.fbcdn.net/v/t39.30808-6/288501795_2807427116227408_60597207930728543_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=dlRpH3SWPLcQ7kNvgH0JaYV&_nc_ht=scontent.fsgn5-2.fna&oh=00_AYAdJe0xhiPOc6N3DJzHv_Ob6VpiJMArCKm7WIUVGOHvkw&oe=665920C3" alt="">
-                    </div>
-                    <div class="friend-name">
-                      <p>Huy Hồ</p>
-                    </div>
-              </div>
-
-              <div class="friend-story">
-                <img src="https://cdn.tuoitre.vn/thumb_w/480/471584752817336320/2023/8/18/sao-phim-nguoi-lon-nhat-giai-nghe-mikami-yua-2-16923728554862024350649.jpg" alt="">
-                    <div class="friend-profile">
-                     <img src="https://cdn.24h.com.vn/upload/4-2020/images/2020-10-25/Thien-than-sexy-phim-18--la-yua-mikami-2-1603597702-767-width1024height768.jpg" alt="">
-                    </div>
-                    <div class="friend-name">
-                      <p> Yua Mikamii</p>
-                    </div>
-              </div>
-
-              <div class="friend-story">
-                <img src="https://we25.vn/media2018/Img_News/2023/02/24/1_20230224110617.jpg" alt="">
-                    <div class="friend-profile">
-                     <img src="https://toptechsinfo.com/wp-content/uploads/2024/04/6666666666666.jpg" alt="">
-                    </div>
-                    <div class="friend-name">
-                      <p> Eimi Fukada</p>
-                    </div>
-              </div>
-              
+              <div id="story" class="top-boxs"></div>
 
               
               <!---->
@@ -182,7 +154,8 @@
                 <div class="create-slide">
                   <div class="ptop">
                     <img id="avarta">
-                    <input type="text" placeholder="What's on your mine, Huy Hồ">
+                    <input type="text" placeholder="What's on your mine, Huy Hồ" data-toggle="modal" data-target="#myModal">
+                    <button type="button">></button>
                   </div>  
                     <hr>
                   <div class="pbottom">
@@ -192,10 +165,12 @@
                         <p>Live</p>
                       </div>
   
-                      <div class="post-icon">
+                      <div class="post-icon" id="media-icon">
                         <i class="fa-solid fa-images green"></i>
                         <p>Media</p>
                       </div>
+                      <input type="file" id="file-input">
+                      
   
                       <div class="post-icon">
                         <i class="fa-solid fa-face-grin yellow"></i>
@@ -207,150 +182,10 @@
               </div>
 
                <!--LOAD CÁC BÀI POST Ỏ ĐẤY-->
-              <div class="post">
-                  <div class="post-top">
-                      <div class="img-owner">
-                        <img src="/public/img/user_logo.jpg">
-                        <div class="post-owner">
-                            <p class="owner-name">Hà Nguyên Ngọc Nguyễn</p>
-                            <p class="time">2h</p>
-                        </div>
-                      </div>
-                  </div>
+               <div id="post"></div>
 
-                  <div class="post-detail">
-                        <p class="post-text"> HELLO WORD!</p>  
-                        <img alt="">
 
-                        <div class="interact">
 
-                          <div class="emotion-interact">
-                            <i class="fa-solid fa-thumbs-up"></i>
-                            <p>1.2k others</p>
-                          </div>
-
-                          <p class="comments"> 221 Comments </p>
-                          
-                        </div>
-
-                      
-
-                        <hr>
-
-                        <div class="pbottom">
-
-                          <div class="interact-action">
-                            <i class="fa-solid fa-thumbs-up"></i>
-                            <p>Like</p>
-                          </div>
-      
-                          <div class="interact-action">
-                            <i class="fa-solid fa-comment"></i>
-                            <p>Comment</p>
-                          </div>
-      
-                          <div class="interact-action">
-                            <i class="fa-solid fa-share"></i>
-                            <p>Share</p>
-                          </div>
-      
-                      </div>
-                        
-
-                  </div>
-              </div>
-
-              <div class="post">
-                <div class="post-top">
-                    <div class="img-owner">
-                      <img src="/public/img/user_logo.jpg">
-                      <div class="post-owner">
-                          <p class="owner-name">Minh Dâm Dê</p>
-                          <p class="time">2h</p>
-                      </div>
-                    </div>
-                </div>
-                <div class="post-detail">
-                      <!-- <p class="post-text">Xuân Ca Lắc Đít</p>   -->
-                      <video controls>
-                        <!-- <source src="/public/videos/mov_bbb.mp4" type="video/mp4"> -->
-                      </video>
-                      <div class="interact">
-                        <div class="emotion-interact">
-                          <i class="fa-solid fa-thumbs-up"></i>
-                          <p>1.2k others</p>
-                        </div>
-                        <p class="comments"> 221 Comments </p>
-                      </div>
-                      <hr>
-                      <div class="pbottom">
-                        <div class="interact-action">
-                          <i class="fa-solid fa-thumbs-up"></i>
-                          <p>Like</p>
-                        </div>
-                        <div class="interact-action">
-                          <i class="fa-solid fa-comment"></i>
-                          <p>Comment</p>
-                        </div>
-                        <div class="interact-action">
-                          <i class="fa-solid fa-share"></i>
-                          <p>Share</p>
-                        </div>
-                    </div>
-                </div>
-                      </div>
-              <div class="post">
-                <div class="post-top">
-                    <div class="img-owner">
-                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1HZJXeqiitA7XilO_teB6PuoqJn_VOhTNUOXmKJE-OQ&s">
-                      <div class="post-owner">
-                          <p class="owner-name">Trường Đại học Ngoại ngữ - Tin học TP. HCM - HUFLIT</p>
-                          <p class="time">2h</p>
-                      </div>
-                    </div>
-                </div>
-
-                <div class="post-detail">
-                      <p class="post-text"> HUFLIT ĐÃ GỬI THÔNG BÁO TRÚNG TUYỂN SỚM ĐỢT 1 CHO THÍ SINH
-
-                        Chiều qua ngày 13/05, HUFLIT đã gửi tin nhắn trúng tuyển đợt 1 cho các thí sinh trúng tuyển sớm có điều kiện thông qua SMS hoặc email. Với kết quả vừa nhận được, tin chắc rằng các bạn thí sinh đã có thể "thở phào" và yên tâm ôn luyện cho kỳ thi tốt nghiệp THPT 2024 sắp tới.
-                        
-                        Ngoài thông báo ở trên, các bạn có thể tra cứu kết quả bằng tài khoản tuyển sinh đã đăng ký trước đó tại: https://tuyensinh.huflit.edu.vn/.</p>  
-                      <img src="https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/440368996_922348233267247_4579479910841056155_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEI_XXbhCZw9XHnnmMcSeRzOJqHdesQKdM4mod16xAp06jec-tWo6afn4-2irdlYmSgtqZbPYd61btiEkTk3jCG&_nc_ohc=1s0o4kFbBQcQ7kNvgHnkXeN&_nc_ht=scontent.fsgn5-14.fna&oh=00_AYA3Ry3jOnTnxLctQKBdgvI_Ox2lcYxE4H3lfOGMXYjp_g&oe=6652AEE1">
-
-                      <div class="interact">
-
-                        <div class="emotion-interact">
-                          <i class="fa-solid fa-thumbs-up"></i>
-                          <p>1.2k others</p>
-                        </div>
-
-                        <p class="comments"> 221 Comments </p>
-                        
-                      </div>
-
-                    
-
-                      <hr>
-
-                      <div class="pbottom">
-
-                        <div class="interact-action">
-                          <i class="fa-solid fa-thumbs-up"></i>
-                          <p>Like</p>
-                        </div>
-    
-                        <div class="interact-action">
-                          <i class="fa-solid fa-comment"></i>
-                          <p>Comment</p>
-                        </div>
-                        <div class="interact-action">
-                          <i class="fa-solid fa-share"></i>
-                          <p>Share</p>
-                        </div>
-                    </div>
-                </div>
-              </div>
               <!---->
             </div>
             <!--THANH SECTION BÊN PHẢI-->
@@ -404,6 +239,7 @@
                  </div>
       </div>
     </div>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
   integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>

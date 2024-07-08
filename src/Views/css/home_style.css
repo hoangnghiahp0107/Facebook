@@ -34,7 +34,7 @@ body {
 
     .main-center>.top-box,
     .main-center>.create-post,
-    .main-center>.post {
+    .main-center>#post .post {
 
         margin-top: 10px;
         width: 100%;
@@ -98,7 +98,7 @@ body {
 
     .main-center>.top-box,
     .main-center>.create-post,
-    .main-center>.post {
+    .main-center>#post .post {
 
         margin-top: 10px;
         width: 100%;
@@ -633,7 +633,18 @@ overflow: hidden;
     border-radius: 10px;
 }
 
+#file-input{
+    display: none;
+}
 
+.top-boxs{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: 280px;
+    overflow: hidden;
+}
 
 .friend-story {
     width: 140px;
@@ -669,7 +680,7 @@ overflow: hidden;
 }
 
 .my-story img {
-    width: 140px;
+    width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
@@ -747,7 +758,7 @@ overflow: hidden;
 }
 
 .create-post {
-    width: 50%;
+    width: 60%;
     height: auto;
     background: #fff;
     border-radius: 7px;
@@ -776,12 +787,23 @@ overflow: hidden;
     border: 0;
     outline: none;
     background: #F0F2F5;
-    border-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    font-size: 14px;
+}
+
+.ptop button{
+    padding: 10px;
+    background: #F0F2F5;
+    border: 0;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: green;
     font-size: 14px;
 }
 
 .pbottom {
-    padding: 5px;
+    padding: 0px 15px;
     width: 90%;
     display: flex;
     justify-content: space-between;
@@ -826,21 +848,25 @@ overflow: hidden;
 }
 
 /* các post*/
-.post {
-    margin: 10px 0;
-    width: 50%;
-    height: auto;
+.post{
     background: #fff;
-    border-radius: 7px;
+    margin: 20px 0;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    height: auto;
+    border-radius: 7px;
+    padding: 10px;
+}
+
+#post {
+    width: 60%;
+
 }
 
 .post-top {
-    margin: 10px 6px;
+    margin: 10px 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 15px;
 }
 
 .post-top .img-owner {
@@ -880,15 +906,17 @@ overflow: hidden;
 }
 
 .post-detail img {
+    max-height: 500px;
+    object-fit: cover;
     width: 100%;
-    margin-top: 10px;
+    margin: 10px 0;
     justify-content: center;
 }
 
 .post-text {
     text-align: start;
     font-size: 15px;
-    padding: 10px;
+    padding: 10px 15px;
 }
 
 
@@ -907,7 +935,7 @@ overflow: hidden;
 .interact {
     font-size: auto;
     overflow-x: hidden;
-    margin: 8px 5px;
+    margin: 10px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -943,4 +971,36 @@ overflow: hidden;
 a {
     text-decoration: none;
     list-style: none;
+}
+
+.post-options {
+    position: relative;
+    cursor: pointer;
+}
+
+.fa-ellipsis-h {
+    font-size: 18px;
+    color: #555;
+}
+
+.options-menu {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.options-menu p {
+    margin: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.options-menu p:hover {
+    background: #f0f0f0;
 }
