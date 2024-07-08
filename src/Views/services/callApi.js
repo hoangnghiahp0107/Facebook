@@ -521,3 +521,21 @@ async function apiCreatePost(formData){
     throw error;
   }
 }
+
+async function apiCreateStory(formData){
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "POST",
+      url: `${URL}/api/storys/create-story`,
+      headers: {
+        token: localStorageToken,
+      },
+      data: formData
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    throw error;
+  }
+}

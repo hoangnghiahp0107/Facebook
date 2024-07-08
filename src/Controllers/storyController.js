@@ -45,7 +45,6 @@ const seeStory = async(req, res) =>{
 
 const getStoryFriend = async (req, res) => {
     try {
-        const currentUserID = req.params.NguoiDungID;
         const token = req.headers.token;
 
         if (!token) {
@@ -88,7 +87,6 @@ const getStoryFriend = async (req, res) => {
                 }
             },
             include:"NguoiDung"
-
         });
 
         res.status(200).send(data);
