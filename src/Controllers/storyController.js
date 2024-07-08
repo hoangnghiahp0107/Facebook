@@ -45,42 +45,50 @@ const seeStory = async(req, res) =>{
 
 const getStoryFriend = async (req, res) => {
     try {
-        const TruyXuatID = req.params.NguoiDungID; 
+        const currentUserID = req.params.NguoiDungID;
         const token = req.headers.token;
 
         if (!token) {
             return res.status(401).send("Người dùng không được xác thực");
         }
+
         const decodedToken = jwt.verify(token, 'HOANGNGHIA');
-        const currentUserID = decodedToken.data.MaNguoiDung;
-        const isFriend = await model.BanBe.findOne({
+        const requestingUserID = decodedToken.data.MaNguoiDung;
+
+        // Lấy danh sách bạn bè của người dùng hiện tại
+        const friends = await model.BanBe.findAll({
             where: {
                 [Op.or]: [
-                    {
-                        MaNguoiDung1: currentUserID,
-                        MaNguoiDung2: TruyXuatID,
-                        TrangThai: 'DaKetBan'
-                    },
-                    {
-                        MaNguoiDung1: TruyXuatID,
-                        MaNguoiDung2: currentUserID,
-                        TrangThai: 'DaKetBan'
-                    }
+                    { MaNguoiDung1: requestingUserID, TrangThai: 'DaKetBan' },
+                    { MaNguoiDung2: requestingUserID, TrangThai: 'DaKetBan' }
                 ]
             }
         });
 
-        if (!isFriend) {
-            return res.status(403).send("Bạn không có quyền xem bài viết này");
-        }
+        // Lấy ID bạn bè
+        const friendIDs = friends.map(friend => {
+            return friend.MaNguoiDung1 === requestingUserID ? friend.MaNguoiDung2 : friend.MaNguoiDung1;
+        });
 
+        // Tính toán thời gian 24 giờ trước
+        const now = new Date();
+        const twentyFourHoursAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+
+        // Lọc ra Story của bạn bè trong 24 giờ gần nhất, không lấy Story của người dùng hiện tại
         const data = await model.Story.findAll({
             where: {
+                NguoiDungID: {
+                    [Op.in]: friendIDs
+                },
                 CheDoRiengTuID: {
                     [Op.in]: [1, 2]
                 },
-                NguoiDungID: TruyXuatID
+                ThoiGian: {
+                    [Op.gte]: twentyFourHoursAgo
+                }
             },
+            include:"NguoiDung"
+
         });
 
         res.status(200).send(data);
@@ -89,5 +97,7 @@ const getStoryFriend = async (req, res) => {
         res.status(500).send("Lỗi khi lấy dữ liệu");
     }
 };
+
+
 
 export { seeStory, getStoryFriend }

@@ -295,4 +295,15 @@ async function deletePost(postId) {
     document.getElementById('file-input').click();
   });
   
-
+async function createPost(){
+    const noiDung = document.getElementById("noiDung").value;
+    const hinhAnh = document.getElementById("file-input").files[0];
+    try {
+        const formData = new FormData();
+        formData.append('NoiDung', noiDung);
+        formData.append('HinhAnh', hinhAnh);
+        await apiCreatePost(formData);
+    } catch (error) {
+        console.error(error);
+    }
+}

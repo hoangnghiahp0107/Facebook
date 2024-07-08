@@ -492,10 +492,28 @@ async function apiSeeStory(userID) {
     const localStorageToken = localStorage.getItem("localStorageToken");
     const response = await axios({
       method: "GET",
-      url: `${URL}/api/storys/see-story/${userID}`,
+      url: `${URL}/api/storys/get-story-friend/${userID}`,
       headers: {
         token: localStorageToken,
       },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    throw error;
+  }
+}
+
+async function apiCreatePost(formData){
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "POST",
+      url: `${URL}/api/posts/create-posts`,
+      headers: {
+        token: localStorageToken,
+      },
+      data: formData
     });
     return response.data;
   } catch (error) {
