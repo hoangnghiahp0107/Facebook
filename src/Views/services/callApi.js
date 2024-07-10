@@ -504,6 +504,24 @@ async function apiSeeStory(userID) {
   }
 }
 
+async function apiSeeStoryForMy(userID) {
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "GET",
+      url: `${URL}/api/storys/get-story-for-me/${userID}`,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    throw error;
+  }
+}
+
+
 async function apiCreatePost(formData){
   try {
     const localStorageToken = localStorage.getItem("localStorageToken");

@@ -43,8 +43,38 @@ const seeStory = async(req, res) =>{
     }
 } 
 
+const getStoryForMy = async (req,res) =>{
+    try {
+        let  { NguoiDungID } = req.params; 
+        const token = req.headers.token;
+
+        if (!token) {
+            return res.status(401).send("Người dùng không được xác thực");
+        }
+
+        const decodedToken = jwt.verify(token, 'HOANGNGHIA');
+        const currentUserID = decodedToken.data.MaNguoiDung;
+        if (Number(NguoiDungID) !== currentUserID) {
+            return res.status(403).send("Không có quyền truy cập thông tin người dùng này");
+        }
+        const data = await model.Story.findOne({
+            where:{
+                NguoiDungID: NguoiDungID
+            },
+            order: [['ThoiGian', 'DESC']],
+            include:"NguoiDung"
+        })
+        res.status(200).send(data);
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Lỗi khi lấy dữ liệu");
+    }
+}
+
 const getStoryFriend = async (req, res) => {
     try {
+        let { NguoiDungID } = req.params;
         const token = req.headers.token;
 
         if (!token) {
@@ -53,7 +83,10 @@ const getStoryFriend = async (req, res) => {
 
         const decodedToken = jwt.verify(token, 'HOANGNGHIA');
         const requestingUserID = decodedToken.data.MaNguoiDung;
-
+        
+        if (Number(NguoiDungID) !== requestingUserID) {
+            return res.status(403).send("Không có quyền truy cập thông tin người dùng này");
+        }
         // Lấy danh sách bạn bè của người dùng hiện tại
         const friends = await model.BanBe.findAll({
             where: {
@@ -98,4 +131,4 @@ const getStoryFriend = async (req, res) => {
 
 
 
-export { seeStory, getStoryFriend }
+export { seeStory, getStoryFriend, getStoryForMy }

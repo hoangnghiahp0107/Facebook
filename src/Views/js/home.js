@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
     if (userID) {
         getUser(userID);
         getPost(userID);
-        getStory(userID);   
+        getStoryForMe(userID);
+        getStory(userID); 
+
     } else {
         console.log("UserID không tồn tại trong localStorage");
     }
@@ -148,6 +150,22 @@ async function getStory(userID) {
     }
 }
 
+async function getStoryForMe(userID) {    
+    try {
+        const story = await apiSeeStoryForMy(userID);
+        const storyObj = new Story(
+            story.MaStory,
+            story.NguoiDung,
+            story.HinhAnh,
+            story.ThoiGian,
+            story.CheDoRiengTuID,
+        );
+        renderStoryForMe(storyObj);
+    } catch (error) {
+        console.log("Lỗi từ máy chủ");
+    }
+}
+
 function renderPost(posts) {
     const html = posts.reduce((result, post) => {
         // Function to calculate relative time
@@ -237,8 +255,8 @@ function renderPost(posts) {
     document.getElementById("post").innerHTML = html;
 }
 
-function renderStory(storys) {
-    const html = storys.reduce((result, story) => {
+function renderStory(story) {
+    const html = story.reduce((result, story) => {
         const imageHtml = story.HinhAnh ? `<img src="/public/img/${story.HinhAnh}" alt="Hình ảnh bài viết">` : '';
         return (
             result +
@@ -258,6 +276,24 @@ function renderStory(storys) {
 
     document.getElementById("story").innerHTML = html;
 }
+
+function renderStoryForMe(story) {
+    const imageHtml = story.HinhAnh ? `<img src="/public/img/${story.HinhAnh}" alt="Hình ảnh bài viết">` : '';
+    const html = `
+        <div class="friend-story">
+            ${imageHtml}
+            <div class="friend-profile">
+                <img src="/public/img/${story.NguoiDung.AnhDaiDien}" alt="Hình đại diện">
+            </div>
+            <div class="friend-name">
+                      <p>${story.NguoiDung.HoTen}</p>
+            </div>
+        </div>
+    `;
+
+    document.getElementById("story-for-me").innerHTML = html;
+}
+
 
 
 function toggleOptionsMenu(postId) {
