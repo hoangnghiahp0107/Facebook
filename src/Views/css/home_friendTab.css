@@ -1,0 +1,465 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border;
+}
+
+hr {
+    background-color: #D8DADF;
+    height: 1px;
+    border: 0;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: #efefef;
+    color: #252525;
+}
+
+/*mobile*/
+@media only screen and (max-width: 720px) {
+    .nav-center {
+        display: none;
+    }
+
+    .nav-right .fa-bars,
+    .nav-right .fa-message,
+    .nav-right .fa-bell {
+        display: none;
+    }
+
+    .nav-left .search-bar {
+        width: 100px;
+        height: 40px;
+    }
+
+    .Selection p{
+        display: none;
+    }
+
+    .Selection i {
+        font-size: 30px;
+    }
+
+    .Selection{
+        justify-content: center;
+    }
+}
+
+
+/*tablet*/
+@media only screen and (max-width: 1024px) {
+
+    .nav-center {
+        display: none;
+    }
+
+    .nav-left .search-bar {
+        width: 100px;
+        height: 40px;
+    }
+
+    .Selection p {
+        font-size: 14px;
+    }
+
+}
+
+
+nav {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+}
+
+/*thanh nav bên trái*/
+.nav-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 16px;
+}
+
+.nav-left .fb-logo {
+    width: 40px;
+    margin: 5px 8px;
+    cursor: pointer;
+}
+
+.nav-left .fb-logo img {
+    width: 100%;
+    border: 50%;
+}
+
+.nav-left .search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 40px;
+    background: #F0F2F5;
+    border-radius: 20px;
+    margin-left: 4px;
+    padding: 0 8px;
+    overflow: hidden;
+
+}
+
+.nav-left .search-bar:hover {
+    background: #D8DADF;
+}
+
+.nav-left .search-bar input {
+    margin-left: 5px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+}
+
+.nav-left .search-bar input:focus {
+    outline: none;
+    border: none;
+    background: none;
+}
+
+/*thanh nav bên phải*/
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+}
+
+.nav-right img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    object-fit: cover;
+    object-position: center;
+    line-height: 45px;
+    margin-right: 16px;
+    margin-left: 8px;
+    border-radius: 50%;
+}
+
+.nav-right i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F0F2F5;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-left: 8px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.nav-right i:hover {
+    background: #D8DADF;
+
+}
+
+/*thanh nav ở giữa*/
+
+.nav-center {
+    margin-right: 30px;
+}
+
+.nav-center i {
+    text-align: center;
+    cursor: pointer;
+    width: 40px;
+    background: none;
+    border-radius: 10px;
+    margin-left: 12px;
+    font-size: 22px;
+    padding: 13px 20px;
+    color: #646262;
+}
+
+.nav-center i:hover {
+    background: #D8DADF;
+}
+
+
+.nav-center .fa-users {
+    color: #0866FF;
+    position: relative;
+}
+
+.nav-center .fa-users::after {
+    content: '';
+    background: #0866FF;
+    width: 100%;
+    height: 2px;
+    bottom: -6px;
+    position: absolute;
+    left: 0;
+}
+/*notification dropdown*/
+.card-noti{
+display: flex;
+flex-direction: column;
+box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+position: absolute;
+background: white;
+height: 0px;
+right: 20px;
+width: 300px;
+border-radius: 8px;
+top:100%;
+overflow: hidden;
+
+}
+
+.noti-container{
+    margin-top: 10px;
+    width: 100%;
+    height:100%;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.noti-container::-webkit-scrollbar {
+    display: none;
+  }
+
+.open-noti{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 500px;
+}
+
+.noti-items{
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+}
+
+.noti-items:hover{
+    background: #D8DADF;
+}
+
+.noti-detail h3{
+    font-size: 10px;
+}
+
+.noti-detail p{
+    margin-top: 5px;
+    font-size: 10px;
+}
+/*profile dropdown menu*/
+.card-menu-warp {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    max-height: 0%;
+    overflow: hidden;
+}
+
+.open-menu {
+    max-height: 400px;
+}
+
+.card-menu {
+    width: 330px;
+    background: white;
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.card-menu-items {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+    padding: 5px 0;
+}
+
+.profile-menu {
+    color: black;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 12px 0;
+    border-radius: 8px;
+    margin-bottom: 15px;
+
+}
+
+.profile-menu p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    font-weight: 550;
+}
+
+.card-menu-items:hover {
+    background: #D8DADF;
+}
+
+.card-menu-items p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #252525;
+    margin-left: 10px;
+    width: 100%;
+    font-size: 15px;
+}
+
+.card-menu-items span {
+    font-size: 22px;
+}
+
+.card-menu .card-menu-items i {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    padding: 8px;
+    margin-right: 15px;
+    border-radius: 50%;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    list-style: none;
+}
+
+
+/*main display*/
+.Main{
+    display: flex;
+    flex-direction: row;
+ height: 100vh;
+ width: 100%;
+ position: fixed;
+ top: 60px;
+}
+
+.LeftSelection{
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    height: 100%;
+    width: 20%;
+ 
+}
+
+
+.RightSelection{
+    padding-top: 30px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #F0F2F5;
+    height: 100%;
+    width: 80%;
+    overflow-y: scroll;
+}
+
+.Selection{
+    border-radius: 5px;
+    align-items: center;
+    height: 40px;
+    font-size: 17px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.Selection i {
+    margin-left: 10px;
+    margin-right: 10px
+}
+
+.Selection:hover{
+    background-color: #D8DADF;
+}
+
+.Selection:hover i{
+    color: #0866FF;
+}
+
+.FriendCard{
+    margin: 10px;
+    width: 225px;
+    height: 300px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.FriendCard img{
+    object-fit: cover;
+
+    width: 225px;
+    height: 225px;
+}
+
+.FriendCard button{
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 205px;
+    height: 30px;
+    border-radius: 10px;
+    background: #86b0f3;
+    color: white;
+    border: none;
+}
+
+.FriendCard button:hover{
+    background: #2675f3;
+}
+
+.FriendCard .name{
+    font-weight: 600;
+    margin-left:10px ;
+    margin-right: 10px;
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Show ellipsis if overflow */
+}
+
+.FriendCard .rf_btn{
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 205px;
+    height: 30px;
+    border-radius: 10px;
+    background: white;
+    color: gray;
+    border: 1px solid gray;
+}
+
+.FriendCard .rf_btn:hover{
+    background: gray;
+    color: white;
+}
+
+.FriendCard .status {
+    margin-left: 10px;
+    color: #646262;
+    margin-top: 15px;
+}

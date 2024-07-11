@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="/public/img/fb_logo.png" />
+    <title>Facebook</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../css/home_friendTab.css">
+    
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css">
+  </head>
+
+  <body>
+
+      <!--THANH NAVIGATOR-->
+        <nav>
+        <div class="nav-left">
+            <div class="fb-logo"><a href="fb_home.html"><img src="/public/img/fb_logo.png"/></a></div>
+            <div class="search-bar"> <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Tìm kiếm trên Facebook"/>
+            </div>
+        </div>
+        <div class="nav-center">
+          <a href="fb_home.html"> <i class="fa-solid fa-house"></i> </a>
+           <a href="fb_friendTab.html"> <i class="fa-solid fa-users"></i>  </a> 
+            <i class="fa-solid fa-tv"></i>
+            <i class="fa-solid fa-shop"></i>
+            <i class="fa-solid fa-users-line"></i>
+        </div>
+        
+        <div class="nav-right">
+            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-message" id="messengerButton"></i>
+            <i class="fa-solid fa-bell" onclick="openNotifications()" ></i>
+          <!-- Drop down Thong bao-->
+            <div class="card-noti" id="notificationWarp">
+
+                  <h4 style="margin-bottom: 10px;">Notifications</h4>
+                  <hr>
+                  
+                  <!--Danh sách thông báo-->
+              <div class="noti-container"> 
+                <!--Item thông báo-->
+                <div class="noti-items">
+                  <img src="../../../public/img/fb_logo.png">
+                  <div class="noti-detail">
+                      <h3>Bài viết của bạn đã nhận được một cảm xúc mới!</h3>
+                      <p>2024-06-07 03:27:14</p>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+            <!-- Drop down profile menu-->
+            <img id="avarta" onclick="openCard()">
+            <div class="card-menu-warp" id="cardWarp">
+              <div class="card-menu">
+                <a href="fb_identity.html" class="profile-menu">
+                    <img id="avarta"/>
+                    <p id="nameID">Huy Hồ</p>
+                </a>
+                <a href="fb.settingIF.html" class="card-menu-items">
+                  <i class="fa-solid fa-gear"></i>
+                  <p>Setting</p>
+                  <span>></span>
+                </a>
+
+                <a href="#" class="card-menu-items">
+                  <i class="fa-solid fa-flag"></i>
+                  <p>Page</p>
+                  <span>></span>
+                </a>
+
+                <a href="#" class="card-menu-items">
+                  <i class="fa-solid fa-envelope"></i>
+                  <p>Support</p>
+                  <span>></span>
+                </a>
+
+                <a href="#" class="card-menu-items" id="logoutButton">
+                  <i class="fa-solid fa-right-to-bracket"></i>
+                  <p>Log out</p>
+                  <span>></span>
+                </a>
+              </div>
+            </div>  
+        
+          </div>
+        </nav>
+
+        <div class="Main">
+            
+          <div class="LeftSelection">
+
+            <div class="Selection" onclick="Reccommendation()">
+              <i class="fa-solid fa-user-group"></i>
+              <p>Recommendation</p>
+            </div>
+
+            <div class="Selection" onclick="FriendRequest()">
+              <i class="fa-solid fa-inbox"></i>
+              <p>Friend request</p>
+            </div>
+
+            <div class="Selection" onclick="YourFriendRequest()">
+              <i class="fa-solid fa-user-clock"></i>
+              <p>Your request</p>
+            </div>
+
+            <div class="Selection" onclick="YourFriend()">
+              <i class="fa-solid fa-user-check"></i>
+              <p>Your friend</p>
+            </div>
+          
+
+          </div>
+
+          <div class="RightSelection">
+
+            <div class="FriendCard">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqjnj661-dIAntcS4hTIJtnl1qFXXpiFaLFQ&s"> 
+              <p class="name">Tên Người lạ</p>
+              <button>Add friend</button>
+            </div>
+
+            <div class="FriendCard">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW5Eo4bvlaiYJtC1ZsMOrtHzA8r1owuwEGug&s"> 
+              <p class="name">Tên Bạn Của bạn</p>
+              <button class="rf_btn">Remove friend</button>
+            </div>
+
+            <div class="FriendCard">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSQI3MpwD9AZ7S7peEqVS_GK3HkyXdt3Y2QqBamRKvyzZMmZlQ3J0MsYaiJf2KmgOgGhg&usqp=CAU"> 
+              <p class="name">Tên người chờ xác nhận</p>
+              <p class="status"> <i class="fa-solid fa-hourglass-start"></i> Chờ phản hồi</p>
+            </div>
+            
+            
+
+          </div>
+
+        </div>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
+  integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../js/class.js"></script>
+  <script src="../services/callApi.js"></script>
+  <script src="../js/home_friendTab.js"></script>
+
+</body>
+</html>
+

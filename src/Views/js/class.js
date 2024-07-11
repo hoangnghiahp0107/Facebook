@@ -76,3 +76,12 @@ class Story{
         this.CheDoRiengTuID = CheDoRiengTuID;
     }
 }
+
+class Banbe{
+    constructor(MaBanBe,TrangThai,HoTen,AnhDaiDien){
+        this.MaBanBe = MaBanBe;
+        this.TrangThai = TrangThai;
+        this.HoTen =HoTen;
+        this.AnhDaiDien = AnhDaiDien;
+    }
+}

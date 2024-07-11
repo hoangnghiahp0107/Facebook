@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-  <link rel="icon" href="/public/img/fb_logo.png" />
+  <link rel="icon" href="/public/img/logo_fb.png" />
   <title>Facebook</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -216,7 +215,7 @@
 
         <div id="imageButtons" style="display: none;">
           <button onclick="cancelUpload()">Hủy</button>
-          <button onclick="createStory()">Đăng story</button>
+          <button type="button" onclick="createStory()">Đăng story</button>
         </div>
       </div>
       <!-- MAIN CENTER SECTION -->
@@ -232,6 +231,7 @@
       </div>
     </div>
   </div>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     function triggerFileInput() {
       document.getElementById('fileInput').click();

@@ -54,11 +54,12 @@ storyRoutes.post('/create-story', upload.single('HinhAnh'), checkToken, async (r
 
         let { CheDoRiengTuID, HinhAnh } = req.body;
         HinhAnh = req.file ? req.file.filename : "";
+        CheDoRiengTuID = CheDoRiengTuID || 1;
         let newData = {
             NguoiDungID,
             HinhAnh,
             CheDoRiengTuID,
-            ThoiGian: new Date()  // Thêm trường ThoiGian với thời gian hiện tại
+            ThoiGian: new Date()
         }
         await model.Story.create(newData);
         res.status(200).send("Thêm story thành công");

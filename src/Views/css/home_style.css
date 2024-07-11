@@ -34,7 +34,7 @@ body {
 
     .main-center>.top-box,
     .main-center>.create-post,
-    .main-center>#post .post {
+    .main-center>#post {
 
         margin-top: 10px;
         width: 100%;
@@ -98,7 +98,7 @@ body {
 
     .main-center>.top-box,
     .main-center>.create-post,
-    .main-center>#post .post {
+    .main-center>#post{
 
         margin-top: 10px;
         width: 100%;
@@ -790,6 +790,10 @@ overflow: hidden;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     font-size: 14px;
+}
+
+.btn{
+    cursor: pointer;
 }
 
 .ptop button{

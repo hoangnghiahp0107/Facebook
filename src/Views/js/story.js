@@ -62,12 +62,12 @@ function renderInfo(user) {
 }
 
 async function createStory(){
-    debugger
     const hinhAnh = document.getElementById("fileInput").files[0];
     try {
         const formData = new FormData();
         formData.append('HinhAnh', hinhAnh);
         await apiCreateStory(formData);
+        window.location.href = "../layout/fb_home.html";
     } catch (error) {
         console.error(error);
     }

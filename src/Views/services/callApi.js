@@ -557,3 +557,138 @@ async function apiCreateStory(formData){
     throw error;
   }
 }
+
+//Get các Người bạn
+async function apiGetFriends(){
+  try{
+  const localStorageToken = localStorage.getItem("localStorageToken");
+  const response = await axios({
+    method: "GET",
+    url: `${URL}/api/friends/get-friends`,
+    headers:{  token:localStorageToken,},
+  });
+  return response.data;
+  }
+  catch(error) {
+    throw error;
+  }
+}
+//Get các các lời mời được gửi đến bạn
+async function apiGetFriendRequests(){
+  try{
+  const localStorageToken = localStorage.getItem("localStorageToken");
+  const response = await axios({
+    method: "GET",
+    url: `${URL}/api/friends/get-requests`,
+    headers:{  token:localStorageToken,},
+  });
+  return response.data;
+  }
+  catch(error) {
+    throw error;
+  }
+}
+//Get các các lời mời được bạn gửi đi
+async function apiGetYourRequests(){
+  try{
+  const localStorageToken = localStorage.getItem("localStorageToken");
+  const response = await axios({
+    method: "GET",
+    url: `${URL}/api/friends/get-yourrequests`,
+    headers:{  token:localStorageToken,},
+  });
+  return response.data;
+  }
+  catch(error) {
+    throw error;
+  }
+}
+//Get các Người dùng bạn có thể kết bạn
+async function apiGetNonFriends(){
+  try{
+  const localStorageToken = localStorage.getItem("localStorageToken");
+  const response = await axios({
+    method: "GET",
+    url: `${URL}/api/friends/get-nonfriends`,
+    headers:{  token:localStorageToken,},
+  });
+  return response.data;
+  }
+  catch(error) {
+    throw error;
+  }
+}
+
+//Trờ thành bạn bè
+async function apiBeFriend(targetID) {
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "PUT",
+      url: `${URL}/api/friends/be-friend`,
+      headers: {
+        token: localStorageToken,
+        'Content-Type': 'application/json'
+      },
+      data: {
+        targetID: targetID
+      }
+    });
+    console.log(`kết bạn thành công với ${targetID}`);
+  } catch (error) {
+    console.log('Kết bạn thất bạn')
+  }
+}
+
+//Tạo quan hệ
+async function apiCreateRelationship(targetID) {
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "POST",
+      url: `${URL}/api/friends/post-relationship`,
+      headers: {
+        token: localStorageToken,
+        'Content-Type': 'application/json'
+      },
+      data: {
+        targetID: targetID
+      }
+    });
+
+    if (response.status === 200) {
+      console.log("Friend request created successfully:", response.data);
+    } else {
+      console.log("Failed to create friend request:", response.data);
+    }
+  } catch (error) {
+    console.error("Error creating friend request:", error);
+  }
+}
+
+//Xóa bạn bè
+async function apiUnfriend(targetID) {
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "DELETE", // Sử dụng phương thức DELETE
+      url: `${URL}/api/friends/unfriend`,
+      headers: {
+        token: localStorageToken,
+        'Content-Type': 'application/json'
+      },
+      data: {
+        targetID: targetID
+      }
+    });
+
+    if (response.status === 200) {
+      console.log("Unfriend successful:", response.data);
+    } else {
+      console.log("Failed to unfriend:", response.data);
+    }
+  } catch (error) {
+    console.error("Error unfriending:", error);
+  }
+}
+

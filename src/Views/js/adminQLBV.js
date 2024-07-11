@@ -67,7 +67,6 @@ function renderPosts(posts) {
                 </div>
             `;
         }
-
         return (
             result +
             `

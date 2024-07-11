@@ -226,10 +226,8 @@ function renderPost(posts) {
                     ${imageHtml} <!-- Conditional image display -->
                     <div class="interact">
                         <div class="emotion-interact">
-                            <i class="fa-solid fa-thumbs-up"></i>
-                            <p>1.2k others</p>
+                 
                         </div>
-                        <p class="comments">221 Comments</p>
                     </div>
                     <hr>
                     <div class="pbottom">
@@ -339,7 +337,12 @@ async function createPost(){
         formData.append('NoiDung', noiDung);
         formData.append('HinhAnh', hinhAnh);
         await apiCreatePost(formData);
-    } catch (error) {
+        Swal.fire('Bài viết của bạn đang được xét duyệt', '', 'success').then(() => {
+            window.location.reload();
+          });    
+        }
+    catch (error) {
         console.error(error);
+        Swal.fire('Đăng bài viết thất bại', '', 'error');
     }
 }
