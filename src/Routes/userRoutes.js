@@ -2,7 +2,7 @@ import express from 'express';
 import sequelize from "../Models/index.js";
 import initModels from "../Models/init-models.js";
 import bcrypt from "bcrypt";
-import {signUp, login, updateUserIF, deleteUser, getUserID, logout, countUser, countUserWeek, countUserMonth, getNewUser, growWeek,  growMonth, getUser, getUserAll, getSearchUser} from "../Controllers/userController.js"
+import {signUp, login, updateUserIF, deleteUser, getUserID, logout, countUser, countUserWeek, countUserMonth, getNewUser, growWeek,  growMonth, getUser, getUserAll, getSearchUser, loginAdminHT, loginAdminQL} from "../Controllers/userController.js"
 import { checkToken } from '../Config/jwtConfig.js';
 import multer from "multer";
 import jwt from "jsonwebtoken";
@@ -16,6 +16,8 @@ const userRoutes = express.Router();
 
 userRoutes.post("/sign-up", signUp);
 userRoutes.post("/login", login);
+userRoutes.post("/login-adminQL", loginAdminQL);
+userRoutes.post("/login-adminHT", loginAdminHT);
 userRoutes.get("/get-users", checkToken, getUser);
 userRoutes.put('/update-user-if/:MaNguoiDung', checkToken, updateUserIF);
 userRoutes.put("/delete-user/:MaNguoiDung", checkToken, deleteUser);

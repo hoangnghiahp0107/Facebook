@@ -103,6 +103,86 @@ const login = async (req, res) => {
     }
 };
 
+const loginAdminHT = async (req, res) => {
+    try {
+        let { Email, SDT, MatKhau } = req.body;
+
+        if (!Email && !SDT) {
+            res.status(400).send("Vui lòng cung cấp email hoặc số điện thoại");
+            return;
+        }
+
+        let checkTK = await model.NguoiDung.findOne({
+            where: {
+                [Op.or]: [
+                    Email ? { Email } : {}, 
+                    SDT ? { SDT } : {}
+                ]
+            },
+        });
+
+        if (checkTK) {
+            if (checkTK.MaVaiTro !== 3) {
+                res.status(403).send("Không có quyền truy cập");
+                return;
+            }
+
+            let checkPass = bcrypt.compareSync(MatKhau, checkTK.MatKhau);
+            if (checkPass) {
+                let token = taoToken(checkTK);
+                res.status(200).send(token);
+            } else {
+                res.status(400).send("Mật khẩu không đúng");
+            }
+        } else {
+            res.status(400).send("Tài khoản không đúng");
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Đã có lỗi trong quá trình xử lý");
+    }
+};
+
+const loginAdminQL = async (req, res) => {
+    try {
+        let { Email, SDT, MatKhau } = req.body;
+
+        if (!Email && !SDT) {
+            res.status(400).send("Vui lòng cung cấp email hoặc số điện thoại");
+            return;
+        }
+
+        let checkTK = await model.NguoiDung.findOne({
+            where: {
+                [Op.or]: [
+                    Email ? { Email } : {}, 
+                    SDT ? { SDT } : {}
+                ]
+            },
+        });
+
+        if (checkTK) {
+            if (checkTK.MaVaiTro !== 1) {
+                res.status(403).send("Không có quyền truy cập");
+                return;
+            }
+
+            let checkPass = bcrypt.compareSync(MatKhau, checkTK.MatKhau);
+            if (checkPass) {
+                let token = taoToken(checkTK);
+                res.status(200).send(token);
+            } else {
+                res.status(400).send("Mật khẩu không đúng");
+            }
+        } else {
+            res.status(400).send("Tài khoản không đúng");
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Đã có lỗi trong quá trình xử lý");
+    }
+};
+
 const updateUser = async(req, res) =>{
     try {
         let { MaNguoiDung } = req.params;
@@ -595,4 +675,4 @@ const getSearchUser = async (req, res) => {
     res.status(200).send(data);
 }
 
-export {signUp, login, updateUserIF, deleteUser, getUserID, logout, countUser, countUserWeek, countUserMonth, getNewUser, growWeek, growMonth, getUser, getUserAll, getSearchUser}
+export {signUp, login, updateUserIF, deleteUser, getUserID, logout, countUser, countUserWeek, countUserMonth, getNewUser, growWeek, growMonth, getUser, getUserAll, getSearchUser, loginAdminHT, loginAdminQL}
