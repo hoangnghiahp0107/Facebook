@@ -24,6 +24,14 @@ async function apiSignUp(user) {
     });
   }
 
+  async function apiLoginAdminQL(user) {
+    return await axios({
+      method: "POST",
+      url: `${URL}/api/users/login-adminQL`,
+      data: user
+    });
+  }
+
   async function apiGetUserID(userID) {
     try {
       const localStorageToken = localStorage.getItem("localStorageToken");
