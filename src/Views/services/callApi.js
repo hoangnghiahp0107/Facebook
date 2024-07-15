@@ -495,6 +495,24 @@ async function apiDeletePost(postID){
   }
 }
 
+async function apiDeleteStory(storyID){
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "DELETE",
+      url: `${URL}/api/storys/delete-story/${storyID}`,
+      headers: {
+        token: localStorageToken,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    throw error;
+  }
+}
+
+
 async function apiSeeStory(userID) {
   try {
     const localStorageToken = localStorage.getItem("localStorageToken");

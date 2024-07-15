@@ -71,8 +71,12 @@ function renderUsers(users) {
               </td>
               <td>
                 <div class="d-flex justify-content-center align-items-center">
-                    <button class="btn btn-primary mx-2" onclick="selectNews('${user.MaNguoiDung}'); resetTB();">Xem</button>
-                    <button class="btn btn-danger" onclick="deleteNews('${user.MaNguoiDung}')">Xoá</button>
+                  <button class="btn btn-outline-success mx-2" onclick="selectAccount('${user.MaNguoiDung}');">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                  </button>
+                  <button class="btn btn-outline-danger" onclick="deleteAccount('${user.MaNguoiDung}')">
+                    <i class="fa-regular fa-circle-xmark"></i>
+                  </button>
                 </div>
               </td>
             </tr>

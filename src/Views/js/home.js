@@ -216,7 +216,8 @@ function renderPost(posts) {
                         <i class="fa-solid fa-ellipsis-h" onclick="toggleOptionsMenu(${post.MaBV})"></i>
                         <div id="optionsMenu-${post.MaBV}" class="options-menu">
                             <div class="d-flex justify-content-center align-items-center">
-                                <p onclick="deletePost(${post.MaBV})"><i class="fa-solid fa-trash-can mx-2"></i></p>                            
+                                <p onclick="selectPost(${post.MaBV})"><i class="fa-regular fa-pen-to-square mx-2"></i></p>
+                                <p onclick="deletePost(${post.MaBV})"><i class="fa-solid fa-trash-can mx-2"></i></p>
                             </div>
                         </div>
                     </div>
@@ -280,16 +281,33 @@ function renderStoryForMe(story) {
     const html = `
         <div class="friend-story">
             ${imageHtml}
-            <div class="friend-profile">
+            <div class="friend-profile" style="display: flex; align-items: center">
                 <img src="/public/img/${story.NguoiDung.AnhDaiDien}" alt="Hình đại diện">
+               <div class="post-options" style="margin-left: 50px">
+                        <i class="fa-solid fa-ellipsis-h" onclick="toggleOptionsMenu(${story.MaStory})"></i>
+                        <div id="optionsMenu-${story.MaStory}" class="options-menu">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <p onclick="deleteStory(${story.MaStory})"><i class="fa-solid fa-trash-can mx-2"></i></p>
+                            </div>
+                        </div>
+                    </div>
             </div>
             <div class="friend-name">
-                      <p>${story.NguoiDung.HoTen}</p>
+                <p>${story.NguoiDung.HoTen}</p>
             </div>
         </div>
     `;
 
     document.getElementById("story-for-me").innerHTML = html;
+}
+
+function toggleOptionsMenu(storyID) {
+    const menu = document.getElementById(`optionsMenu-${storyID}`);
+    if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+    } else {
+        menu.style.display = 'block';
+    }
 }
 
 
@@ -305,8 +323,8 @@ function toggleOptionsMenu(postId) {
 
 async function deletePost(postId) {
     const willDelete = await Swal.fire({
-      title: "Bạn có muốn xóa tài khoản?",
-      text: "Nhấn OK để xác nhận xóa tài khoản.",
+      title: "Bạn có muốn xóa bài viết?",
+      text: "Nhấn OK để xác nhận xóa bài viết.",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "OK",
@@ -316,11 +334,11 @@ async function deletePost(postId) {
     if (willDelete.isConfirmed) {
       try {
         await apiDeletePost(postId);
-        Swal.fire('Xóa tài khoản thành công', '', 'success').then(() => {
+        Swal.fire('Xóa bài viết thành công', '', 'success').then(() => {
           window.location.reload();
         });
       } catch (error) {
-        Swal.fire('Xóa tài khoản thất bại', '', 'error');
+        Swal.fire('Xóa bài viết thất bại', '', 'error');
       }
     }
   }
@@ -346,3 +364,26 @@ async function createPost(){
         Swal.fire('Đăng bài viết thất bại', '', 'error');
     }
 }
+
+async function deleteStory(storyID) {
+    const willDelete = await Swal.fire({
+      title: "Bạn có muốn xóa story?",
+      text: "Nhấn OK để xác nhận xóa story.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "OK",
+      cancelButtonText: "Hủy",
+    });
+  
+    if (willDelete.isConfirmed) {
+      try {
+        await apiDeleteStory(storyID);
+        Swal.fire('Xóa story thành công', '', 'success').then(() => {
+          window.location.reload();
+        });
+      } catch (error) {
+        Swal.fire('Xóa story thất bại', '', 'error');
+      }
+    }
+  }
+  

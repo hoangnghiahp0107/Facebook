@@ -71,6 +71,22 @@ const getStoryForMy = async (req,res) =>{
     }
 }
 
+const deleteStory= async(req,res) =>{
+    try {
+        let {MaStory} = req.params;
+        await model.Story.destroy({
+            where:{
+                MaStory: MaStory
+            }
+        });
+
+        res.status(200).send("Xóa story thành công!");
+    } catch(error) {
+        console.log(error);
+        res.status(500).send("Đã có lỗi trong quá trình xử lý!")
+    }
+};
+
 const getStoryFriend = async (req, res) => {
     try {
         let { NguoiDungID } = req.params;
@@ -130,4 +146,4 @@ const getStoryFriend = async (req, res) => {
 
 
 
-export { seeStory, getStoryFriend, getStoryForMy }
+export { seeStory, getStoryFriend, getStoryForMy, deleteStory }

@@ -564,6 +564,7 @@ nav {
     border-radius: 3px;
     padding: 12px;
     display: inline-flex;
+    flex-wrap: nowrap;
     margin-top: 30px;
 }
 .pd-right a img {
