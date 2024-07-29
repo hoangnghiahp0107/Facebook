@@ -213,7 +213,7 @@ function renderPost(posts) {
                         </div>
                     </div>
                     <div class="post-options">
-                        <i class="fa-solid fa-ellipsis-h" onclick="toggleOptionsMenu(${post.MaBV})"></i>
+                        <i class="fa-solid fa-ellipsis-h" onclick="toggleOptionsMenu1(${post.MaBV})"></i>
                         <div id="optionsMenu-${post.MaBV}" class="options-menu">
                             <div class="d-flex justify-content-center align-items-center">
                                 <p onclick="selectPost(${post.MaBV})"><i class="fa-regular fa-pen-to-square mx-2"></i></p>
@@ -312,7 +312,7 @@ function toggleOptionsMenu(storyID) {
 
 
 
-function toggleOptionsMenu(postId) {
+function toggleOptionsMenu1(postId) {
     const menu = document.getElementById(`optionsMenu-${postId}`);
     if (menu.style.display === 'block') {
         menu.style.display = 'none';

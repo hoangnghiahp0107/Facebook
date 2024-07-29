@@ -58,7 +58,7 @@ async function getUser() {
             post.BaiVietID,
             post.NguoiDuyet,
             post.TrangThaiKiemDuyet,
-            post.ThoiGian,
+            post.ThoiGianKiemDuyet,
             post.NguoiDuyet_NguoiDung,
             post.BaiViet
         ))
@@ -110,7 +110,7 @@ function renderNewsPost(posts) {
     const currentTime = new Date(); // Thời gian hiện tại
 
     const html = posts.reduce((result, post, index) => {
-        const registrationDate = new Date(post.ThoiGian);
+        const registrationDate = new Date(post.ThoiGianKiemDuyet);
         const timeDifference = Math.floor((currentTime - registrationDate) / (1000 * 60));
 
         // Hàm chuyển đổi số phút thành đơn vị thời gian tương ứng

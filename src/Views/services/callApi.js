@@ -718,3 +718,104 @@ async function apiUnfriend(targetID) {
   }
 }
 
+// Tạo bình luận mới
+async function apiCreateComment(postID, content) {
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "POST",
+      url: `${URL}/api/comments/create-comment`,
+      headers: {
+        token: localStorageToken,
+        'Content-Type': 'application/json'
+      },
+      data: {
+        BaiVietID: postID,
+        NoiDung: content
+      }
+    });
+
+    if (response.status === 200) {
+      console.log("Tạo bình luận thành công:", response.data);
+    } else {
+      console.log("Tạo bình luận thất bại:", response.data);
+    }
+  } catch (error) {
+    console.error("Lỗi khi tạo bình luận:", error);
+  }
+}
+
+// Xóa bình luận
+async function apiDeleteComment(commentID) {
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "DELETE",
+      url: `${URL}/api/comments/delete-comment`,
+      headers: {
+        token: localStorageToken,
+        'Content-Type': 'application/json'
+      },
+      data: {
+        BinhLuanID: commentID
+      }
+    });
+
+    if (response.status === 200) {
+      console.log("Xóa bình luận thành công:", response.data);
+    } else {
+      console.log("Xóa bình luận thất bại:", response.data);
+    }
+  } catch (error) {
+    console.error("Lỗi khi xóa bình luận:", error);
+  }
+}
+
+// Chỉnh sửa bình luận
+async function apiEditComment(commentID, updatedContent) {
+  try {
+    const localStorageToken = localStorage.getItem("localStorageToken");
+    const response = await axios({
+      method: "PUT",
+      url: `${URL}/api/comments/edit-comment`,
+      headers: {
+        token: localStorageToken,
+        'Content-Type': 'application/json'
+      },
+      data: {
+        BinhLuanID: commentID,
+        NoiDung: updatedContent
+      }
+    });
+
+    if (response.status === 200) {
+      console.log("Chỉnh sửa bình luận thành công:", response.data);
+    } else {
+      console.log("Chỉnh sửa bình luận thất bại:", response.data);
+    }
+  } catch (error) {
+    console.error("Lỗi khi chỉnh sửa bình luận:", error);
+  }
+}
+
+// Lấy tất cả bình luận cho bài viết
+async function apiGetAllCommentsForPost(postID) {
+  try {
+    const response = await axios({
+      method: "GET",
+      url: `${URL}/api/comments/comments/${postID}`,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (response.status === 200) {
+      console.log("Lấy bình luận thành công:", response.data);
+    } else {
+      console.log("Lấy bình luận thất bại:", response.data);
+    }
+  } catch (error) {
+    console.error("Lỗi khi lấy bình luận:", error);
+  }
+}
+
